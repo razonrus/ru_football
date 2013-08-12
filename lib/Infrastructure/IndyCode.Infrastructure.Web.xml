@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndyCode.Infrastructure.Web</name>
+    </assembly>
+    <members>
+        <member name="T:IndyCode.Infrastructure.Web.Properties.LocalizedStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Properties.LocalizedStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Properties.LocalizedStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Properties.LocalizedStrings.Found">
+            <summary>
+              Looks up a localized string similar to Найдено.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Properties.LocalizedStrings.Pages">
+            <summary>
+              Looks up a localized string similar to Страницы.
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Web.Mvc.Paging.HtmlHelperPagingExtensions">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Mvc.Paging.HtmlHelperPagingExtensions.Pager(System.Web.Mvc.HtmlHelper,IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo)">
+            <summary>
+            Контрол пейджер
+            </summary>
+            <param name="htmlHelper"><see cref="T:System.Web.Mvc.HtmlHelper"/></param>
+            <param name="pageInfo"></param>
+            <returns>HTML текст с пейджером</returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Mvc.Paging.HtmlHelperPagingExtensions.Pager(System.Web.Mvc.HtmlHelper,IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo,System.Object)">
+            <summary>
+            Контрол пейджер
+            </summary>
+            <param name="htmlHelper"><see cref="T:System.Web.Mvc.HtmlHelper"/></param>
+            <param name="pageInfo"></param>
+            <param name="values">Дополнительные параметры для роутинга</param>
+            <returns>HTML текст с пейджером</returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Mvc.Paging.HtmlHelperPagingExtensions.Pager(System.Web.Mvc.HtmlHelper,IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo,System.String,System.Object)">
+            <summary>
+            Контрол пейджер
+            </summary>
+            <param name="htmlHelper"><see cref="T:System.Web.Mvc.HtmlHelper"/></param>
+            <param name="pageInfo"></param>
+            <param name="actionName">Имя действия, которое осуществит переход на конкретную страницу</param>
+            <param name="values">Дополнительные параметры для роутинга</param>
+            <returns>HTML текст с пейджером</returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Mvc.Paging.HtmlHelperPagingExtensions.Pager(System.Web.Mvc.HtmlHelper,IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo,System.String,System.String,System.Object)">
+            <summary>
+            Контрол пейджер
+            </summary>
+            <param name="htmlHelper"><see cref="T:System.Web.Mvc.HtmlHelper"/></param>
+            <param name="pageInfo"></param>
+            <param name="actionName">Имя действия, которое осуществит переход на конкретную страницу</param>
+            <param name="controllerName">Имя контроллера</param>
+            <param name="values">Дополнительные параметры для роутинга</param>
+            <returns>HTML текст с пейджером</returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo">
+            <summary>
+            Информаия о странице
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            ctor
+            </summary>
+            <param name="index">Индекс страницы</param>
+            <param name="pageSize">Размер страницы</param>
+            <param name="totalItemsCount">Количество элементов</param>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo.Empty">
+            <summary>
+            Возвращает информацию о пустой странице
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo.PagesCount">
+            <summary>
+            Количество страниц
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo.TotalItemsCount">
+            <summary>
+            Всего элементов
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo.Index">
+            <summary>
+            Индекс страницы
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo.Number">
+            <summary>
+            Номер страницы <see cref="P:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo.Index"/>+1
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Web.Mvc.Paging.PageInfo.PageSize">
+            <summary>
+            Размер страницы
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Web.Mvc.UrlHelperExtensions">
+            <summary>
+             Расширения для UrlHelper
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Mvc.UrlHelperExtensions.Action``1(System.Web.Mvc.UrlHelper,System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+             Метод, позволяет получить URL по заданному выражению.
+            </summary>
+            <param name="urlHelper"></param>
+            <param name="expression"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Web.Routing.RedirectToRoutePermanentHandler">
+            <summary>
+             Обработчик постоянного перенаправления на заданный маршрут
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Routing.RedirectToRoutePermanentHandler.#ctor(System.Object)">
+            <summary>
+             ctor
+            </summary>
+            <param name="routes"></param>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Routing.RedirectToRoutePermanentHandler.#ctor(System.Web.Routing.RouteValueDictionary)">
+            <summary>
+             ctor
+            </summary>
+            <param name="routeDictionary"></param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Web.Routing.RouteCollectionExtensions">
+            <summary>
+             Методы расширения для коллекции маршрутов
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Web.Routing.RouteCollectionExtensions.MapRedirectToRoutePermanent(System.Web.Routing.RouteCollection,System.String,System.Object)">
+            <summary>
+            Добавить маршрут, который будет отсылать постоянное перенаправления на заданный маршрут
+            </summary>
+            <param name="routes">Коллекция маршрутов для ASP.NET</param>
+            <param name="url">Шаблон URL для заданного маршрута</param>
+            <param name="values"></param>
+        </member>
+    </members>
+</doc>

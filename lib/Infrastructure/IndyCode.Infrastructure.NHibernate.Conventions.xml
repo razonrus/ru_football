@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndyCode.Infrastructure.NHibernate.Conventions</name>
+    </assembly>
+    <members>
+        <member name="T:IndyCode.Infrastructure.NHibernate.Conventions.HasManyConvention">
+            <summary>
+            Конвенция по-умолчанию для one-to-many и many-to-many ассоциаций.
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.Conventions.CustomManyToManyTableNameConvention">
+            <summary>
+             Соглашение для генерации имен таблиц many-to-many
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.Conventions.ForeignKeyConstraintNameConvention">
+            <summary>
+             Соглашение для названий внешнийх ключей
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.Conventions.NotNullPropertyConvention">
+            <summary>
+             Соглашение о том, что если поле помечено как NotNull, то в базе оно так же должно быть not null
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.Conventions.EntityMapConvention">
+            <summary>
+            Соглашение по-умолчанию для сущностей.
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.Conventions.SoftDeleteCollectionConvention">
+            <summary>
+            Конвенция для ISoftDelete
+            </summary>
+        </member>
+    </members>
+</doc>

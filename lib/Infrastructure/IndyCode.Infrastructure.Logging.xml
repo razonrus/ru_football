@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndyCode.Infrastructure.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:IndyCode.Infrastructure.Logging.Logger">
+            <summary>
+            Объект для сохранения исключений
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Logging.Logger.SaveLog(System.Exception)">
+            <summary>
+            Save info about exception to XML
+            </summary>
+            <param name="ex"></param>
+        </member>
+    </members>
+</doc>

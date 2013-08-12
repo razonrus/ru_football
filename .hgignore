@@ -1,0 +1,3 @@
+relre:.*/bin/.*
+relre:.*ReSharper.*
+relre:.*/obj/.*
