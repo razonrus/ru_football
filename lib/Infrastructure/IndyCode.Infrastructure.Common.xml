@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndyCode.Infrastructure.Common</name>
+    </assembly>
+    <members>
+        <member name="T:IndyCode.Infrastructure.Common.DataAnnotations.IndexAttribute">
+            <summary>
+            When applied to target field, specifies a index number for it which can be used
+            in ordering fields (or its values) in a sequence
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.DataAnnotations.IndexAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes new instance of IndexAttribute
+            </summary>
+            <param name="index">Specifies index number for field</param>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Common.DataAnnotations.IndexAttribute.Index">
+            <summary>
+            Gets index number for field annotated with this instance of IndexAttribute
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.Check">
+            <summary>
+            Check object invariants
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Check.IsNotNull(System.Object,System.String)">
+            <summary>
+            Check is object null.
+            </summary>
+            <param name="obj">Object to check</param>
+            <param name="paramName">Name of object parameter</param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.DisposableAction">
+            <summary>
+             Выполняет указанное действие при вызове <see cref="M:System.IDisposable.Dispose"/>
+             <example>
+            	<![CDATA[
+             using(new DisposableAction(()=>uow.Commit())){
+             // some work here...
+             }
+             ]]>
+             </example>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.DisposableAction.#ctor(System.Action)">
+            <summary>
+             Конструктор
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.EncodedStringWriter">
+            <summary>
+            <see cref="T:System.IO.StringWriter"/>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.EncodedStringWriter.#ctor(System.Text.Encoding)">
+            <summary>
+            ctor
+            </summary>
+            <param name="encoding"></param>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Common.EncodedStringWriter.Encoding">
+            <summary>
+            Gets the <see cref="T:System.Text.Encoding"/> in which the output is written.
+            </summary>
+            <returns>
+            The Encoding in which the output is written.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.Extensions.CustomAttributeProviderExtensions">
+            <summary>
+            Методы расширения для <see cref="T:System.Reflection.ICustomAttributeProvider"/>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.CustomAttributeProviderExtensions.GetCustomAttributes``1(System.Reflection.ICustomAttributeProvider,System.Boolean)">
+            <summary>
+             Строготипизированная версия метода GetCustomAttributes
+            </summary>
+            <param name="attributeProvider"></param>
+            <param name="inherit"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.Extensions.DictionaryExtensions">
+            <summary>
+             Методы расширения для <see cref="T:System.Collections.Generic.IDictionary`2"/>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.DictionaryExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>
+            Метод получения значения из словаря
+            </summary>
+            <typeparam name="TKey">Тип ключа</typeparam>
+            <typeparam name="TValue">Тип значения</typeparam>
+            <param name="dictionary">словарь</param>
+            <param name="key">ключ</param>
+            <returns>значение из словаря или значения по умолчанию, если ключ не найден в словаре</returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.DictionaryExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
+            <summary>
+            Метод получения значения из словаря
+            </summary>
+            <typeparam name="TKey">Тип ключа</typeparam>
+            <typeparam name="TValue">Тип значения</typeparam>
+            <param name="dictionary">словарь</param>
+            <param name="key">ключ</param>
+            <param name="defaultValue">значение по умолчанию</param>
+            <returns>значение из словаря или значения по умолчанию, если ключ не найден в словаре</returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.DictionaryExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.Func{``1})">
+            <summary>
+            Метод получения значения из словаря
+            </summary>
+            <typeparam name="TKey">Тип ключа</typeparam>
+            <typeparam name="TValue">Тип значения</typeparam>
+            <param name="dictionary">словарь</param>
+            <param name="key">ключ</param>
+            <param name="defaultValue">Делегат для получения значения по умолчанию</param>
+            <returns>значение из словаря или значения по умолчанию, если ключ не найден в словаре</returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.Extensions.EnumExtensions">
+            <summary>
+             Методы расширения для перечислений
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.EnumExtensions.GetDescription(System.Enum)">
+            <summary>
+            Взять значение атрибута Description
+            </summary>
+            <param name="member">элемент перечисления</param>
+            <returns></returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.EnumExtensions.GetIndex(System.Enum)">
+            <summary>
+            Взять значение атрибута Index
+            </summary>
+            <param name="member">элемент перечисления</param>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.Extensions.StringExtensions">
+            <summary>
+             Класс свойств расширений для коллекций строк
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.StringExtensions.Join(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+             Объединяет коллекцию строк в одну строку использую разделитель
+            </summary>
+            <param name="source"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.StringExtensions.Join(System.Collections.Specialized.StringCollection,System.String)">
+            <summary>
+             Объединяет коллекцию строк в одну строку использую разделитель
+            </summary>
+            <param name="source"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.Extensions.XDocumentExtensions">
+            <summary>
+              Расшерения для XDocument
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.XDocumentExtensions.ToXml(System.Xml.Linq.XDocument)">
+            <summary>
+              Преобразовать документ в XML-строку
+            </summary>
+            <param name="document"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.XDocumentExtensions.ToXml(System.Xml.Linq.XDocument,System.Text.Encoding)">
+            <summary>
+              Преобразовать документ в XML-строку
+            </summary>
+            <param name="document"> Документ </param>
+            <param name="encoding"> Кодировка документа </param>
+            <returns> </returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.XDocumentExtensions.ToXml(System.Xml.Linq.XDocument,System.Xml.Linq.SaveOptions)">
+            <summary>
+              Преобразовать документ в XML-строку
+            </summary>
+            <param name="document"> Документ </param>
+            <param name="options"> Опции сохранения </param>
+            <returns> </returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.XDocumentExtensions.ToXml(System.Xml.Linq.XDocument,System.Text.Encoding,System.Xml.Linq.SaveOptions)">
+            <summary>
+              Преобразовать документ в XML-строку
+            </summary>
+            <param name="document"> Документ </param>
+            <param name="encoding"> Кодировка документа </param>
+            <param name="options"> Опции сохранения </param>
+            <returns> </returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.CartesianPower">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.Extensions.ObjectExtensions">
+            <summary>
+            Расширения для конвертации типов
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.ObjectExtensions.TryConvertInto``1(System.Object,``0@)">
+            <summary>
+            Пытается конвертировать объект в тип объекта <paramref name="converted"/>
+            </summary>
+            <typeparam name="T">Любой тип</typeparam>
+            <param name="toConvert">Объект, который будет сконвертирован</param>
+            <param name="converted">Объект, в который будет происходить конвертация</param>
+            <returns>True, если конвертация прошла успешно, иначе false</returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.ObjectExtensions.Value``1(System.Object)">
+            <summary>
+            Пытается конвертировать объект в тип объекта <paramref name="{T}"/>
+            </summary>
+            <typeparam name="T">Любой тип</typeparam>
+            <param name="toConvert">Объект, который будет сконвертирован</param>
+            <returns>True, если конвертация прошла успешно, иначе false</returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Common.Extensions.ObjectExtensions.IsEmptyObject(System.Object)">
+            <summary>
+            Check is value empty or not
+            </summary>
+            <param name="toCheck">Список строк</param>
+            <returns>True, если список равен null или не содержит элементов, иначе false</returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Common.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Common.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Common.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Common.Resources.ArgumentNullException">
+            <summary>
+              Looks up a localized string similar to Parameter {0} is null.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Common.Resources.EmailValidationRegex">
+            <summary>
+              Looks up a localized string similar to [a-z0-9!#$%&amp;amp;&apos;*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;amp;&apos;*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.
+            </summary>
+        </member>
+    </members>
+</doc>

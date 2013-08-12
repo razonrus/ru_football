@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndyCode.Infrastructure.Wcf</name>
+    </assembly>
+    <members>
+        <member name="T:IndyCode.Infrastructure.Wcf.NetDataContractOperationBehavior">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Wcf.NetDataContractOperationBehavior.#ctor(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            </summary>
+            <param name="operation"></param>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Wcf.NetDataContractOperationBehavior.#ctor(System.ServiceModel.Description.OperationDescription,System.ServiceModel.DataContractFormatAttribute)">
+            <summary>
+            </summary>
+            <param name="operation"></param>
+            <param name="dataContractFormatAttribute"></param>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Wcf.NetDataContractOperationBehavior.CreateSerializer(System.Type,System.String,System.String,System.Collections.Generic.IList{System.Type})">
+            <summary>
+            Creates an instance of a class that inherits from <see cref="T:System.Runtime.Serialization.XmlObjectSerializer"/> for serialization and deserialization operations.
+            </summary>
+            <returns>
+            An instance of a class that inherits from the <see cref="T:System.Runtime.Serialization.XmlObjectSerializer"/> class.
+            </returns>
+            <param name="type">The <see cref="T:System.Type"/> to create the serializer for.</param><param name="name">The name of the generated type.</param><param name="ns">The namespace of the generated type.</param><param name="knownTypes">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Type"/> that contains known types.</param>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Wcf.NetDataContractOperationBehavior.CreateSerializer(System.Type,System.Xml.XmlDictionaryString,System.Xml.XmlDictionaryString,System.Collections.Generic.IList{System.Type})">
+            <summary>
+            Creates an instance of a class that inherits from <see cref="T:System.Runtime.Serialization.XmlObjectSerializer"/> for serialization and deserialization operations with an <see cref="T:System.Xml.XmlDictionaryString"/> that contains the namespace.
+            </summary>
+            <returns>
+            An instance of a class that inherits from the <see cref="T:System.Runtime.Serialization.XmlObjectSerializer"/> class.
+            </returns>
+            <param name="type">The type to serialize or deserialize.</param><param name="name">The name of the serialized type.</param><param name="ns">An <see cref="T:System.Xml.XmlDictionaryString"/> that contains the namespace of the serialized type.</param><param name="knownTypes">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Type"/> that contains known types.</param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Wcf.UseNetDataContractSerializerAttribute">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Wcf.UseNetDataContractSerializerAttribute.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            Implement to pass data at runtime to bindings to support custom behavior.
+            </summary>
+            <param name="operationDescription">The operation being examined. Use for
+            examination only. If the operation description is modified, the results
+            are undefined.</param><param name="bindingParameters">The collection of
+            objects that binding elements require to support the behavior.</param>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Wcf.UseNetDataContractSerializerAttribute.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
+            <summary>
+            Implements a modification or extension of the client across an operation.
+            </summary>
+            <param name="operationDescription">The operation being examined. Use for
+            examination only. If the operation description is modified, the results
+            are undefined.</param><param name="clientOperation">The run-time object
+            that exposes customization properties for the operation described by 
+            <paramref name="operationDescription"/>.</param>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Wcf.UseNetDataContractSerializerAttribute.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
+            <summary>
+            Implements a modification or extension of the service across an operation.
+            </summary>
+            <param name="operationDescription">The operation being examined. Use for
+            examination only. If the operation description is modified, the results
+            are undefined.</param><param name="dispatchOperation">The run-time object
+            that exposes customization properties for the operation described by 
+            <paramref name="operationDescription"/>.</param>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Wcf.UseNetDataContractSerializerAttribute.Validate(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            Implement to confirm that the operation meets some intended criteria.
+            </summary>
+            <param name="operationDescription">The operation being examined. Use for
+            examination only. If the operation description is modified, the results
+            are undefined.</param>
+        </member>
+    </members>
+</doc>

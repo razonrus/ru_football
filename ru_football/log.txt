@@ -1,0 +1,315 @@
+2011-03-31 21:37:17,055 [9] INFO  Ц NHibernate 2.1.2.4000 (2.1.2.4000)
+2011-03-31 21:37:17,056 [9] INFO  Ц hibernate-configuration section not found in application configuration file
+2011-03-31 21:37:17,056 [9] INFO  Ц Bytecode provider name : lcg
+2011-03-31 21:37:17,057 [9] INFO  Ц Using reflection optimizer
+2011-03-31 21:37:17,353 [9] INFO  Ц Using dialect: NHibernate.Dialect.MsSql2008Dialect
+2011-03-31 21:37:20,043 [9] INFO  Ц Mapping class: Domain.Forecast -> FORECAST
+2011-03-31 21:37:20,133 [9] INFO  Ц Using dialect: NHibernate.Dialect.MsSql2008Dialect
+2011-03-31 21:37:20,162 [9] INFO  Ц Mapping class: Domain.Ljuser -> LJUSER
+2011-03-31 21:37:20,179 [9] INFO  Ц checking mappings queue
+2011-03-31 21:37:20,180 [9] INFO  Ц processing one-to-many association mappings
+2011-03-31 21:37:20,183 [9] INFO  Ц mapping collection: Domain.Ljuser.Forecasts -> FORECAST
+2011-03-31 21:37:20,187 [9] INFO  Ц processing one-to-one association property references
+2011-03-31 21:37:20,188 [9] INFO  Ц processing foreign key constraints
+2011-03-31 21:37:20,191 [9] INFO  Ц processing filters (second pass)
+2011-03-31 21:37:20,214 [9] INFO  Ц Using dialect: NHibernate.Dialect.MsSql2008Dialect
+2011-03-31 21:37:20,215 [9] INFO  Ц Using dialect defined converter
+2011-03-31 21:37:20,215 [9] INFO  Ц Generate SQL with comments: disabled
+2011-03-31 21:37:20,216 [9] INFO  Ц Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2011-03-31 21:37:20,217 [9] INFO  Ц Configuring ConnectionProvider
+2011-03-31 21:37:20,218 [9] INFO  Ц Transaction factory: NHibernate.Transaction.AdoNetWithDistrubtedTransactionFactory
+2011-03-31 21:37:20,219 [9] INFO  Ц Optimize cache for minimal puts: False
+2011-03-31 21:37:20,219 [9] INFO  Ц Connection release mode: auto
+2011-03-31 21:37:20,219 [9] INFO  Ц Default batch fetch size: 1
+2011-03-31 21:37:20,219 [9] INFO  Ц Statistics: enabled
+2011-03-31 21:37:20,219 [9] INFO  Ц Deleted entity synthetic identifier rollback: disabled
+2011-03-31 21:37:20,220 [9] INFO  Ц Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2011-03-31 21:37:20,221 [9] INFO  Ц Query language substitutions: {}
+2011-03-31 21:37:20,221 [9] INFO  Ц cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2011-03-31 21:37:20,224 [9] INFO  Ц Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2011-03-31 21:37:20,225 [9] INFO  Ц Default entity-mode: Poco
+2011-03-31 21:37:20,225 [9] INFO  Ц Named query checking : enabled
+2011-03-31 21:37:20,245 [9] INFO  Ц building session factory
+2011-03-31 21:37:20,558 [9] INFO  Ц no name configured
+2011-03-31 21:37:20,696 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,218 [9] WARN  Ц ёзер rh_creep сделал 1 прогнозов
+2011-03-31 21:37:21,218 [9] WARN  Ц 1. 1:1<br />2. 1:0<br />3. 2:1<br />4. 1:2<br />5. 1:2<br />6. 3:0<br />7. 0:1<br />8. 1:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423139141'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,228 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,230 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,265 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,267 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,358 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,358 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,365 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,365 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,381 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,382 [9] WARN  Ц ёзер baddy_booy сделал 1 прогнозов
+2011-03-31 21:37:21,382 [9] WARN  Ц 1. 1:1<br />2. 1:1<br />3. 2:1<br />4. 1:2<br />5. 1:2<br />6. 2:0<br />7. 1:1<br />8. 2:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423139653'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,383 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,383 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,384 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,384 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,407 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,407 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,407 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,407 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,420 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,420 [9] WARN  Ц ёзер simplegary сделал 1 прогнозов
+2011-03-31 21:37:21,420 [9] WARN  Ц 1. 1:1<br />2. 1:1<br />3. 1:0<br />4. 0:0<br />5. 0:1<br />6. 2:0<br />7. 0:0<br />8. 0:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423140421'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,420 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,420 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,434 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,434 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,445 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,445 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,445 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,445 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,450 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,452 [9] WARN  Ц ёзер ereizer сделал 1 прогнозов
+2011-03-31 21:37:21,452 [9] WARN  Ц 1. 0:2<br />2. 0:0<br />3. 2:1<br />4. 0:2<br />5. 1:2<br />6. 2:0<br />7. 1:2<br />8. 1:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423140677'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,452 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,453 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,472 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,472 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,474 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,474 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,474 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,474 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,484 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,485 [9] WARN  Ц ёзер e_xanax сделал 1 прогнозов
+2011-03-31 21:37:21,485 [9] WARN  Ц 1. 0:2<br />2. 1:0<br />3. 1:3<br />4. 1:1<br />5. 1:2<br />6. 1:0<br />7. 0:0<br />8. 1:1 <p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423140933'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,485 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,486 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,500 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,500 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,501 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,501 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,501 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,501 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,511 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,514 [9] WARN  Ц ёзер oktopuspaul сделал 1 прогнозов
+2011-03-31 21:37:21,514 [9] WARN  Ц 1. 0:2<br />2. 1:0<br />3. 1:0<br />4. 0:2<br />5. 3:1<br />6. 2:0<br />7. 0:0<br />8. 0:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423141189'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,514 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,514 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,517 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,517 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,518 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,518 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,518 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,518 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,545 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,545 [9] WARN  Ц ёзер vladimirart сделал 1 прогнозов
+2011-03-31 21:37:21,545 [9] WARN  Ц 1. 1:3<br />2. 2:1<br />3. 2:0<br />4. 0:2<br />5. 1:3<br />6. 2:0<br />7. 1:2<br />8. 1:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423141445'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,545 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,545 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,546 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,546 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,546 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,546 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,546 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,546 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,550 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,550 [9] WARN  Ц ёзер arsilnik сделал 1 прогнозов
+2011-03-31 21:37:21,550 [9] WARN  Ц 1. 1:0<br />2. 1:0<br />3. 0:0<br />4. 1:1<br />5. 1:1<br />6. 3:1<br />7. 0:1<br />8. 2:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423141701'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,550 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,550 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,551 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,551 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,551 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,551 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,551 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,551 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,555 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,556 [9] WARN  Ц ёзер gataguk сделал 1 прогнозов
+2011-03-31 21:37:21,556 [9] WARN  Ц 1. 0:1<br />2. 2:1<br />3. 1:0<br />4. 0:1<br />5. 1:1<br />6. 3:0<br />7. 0:1<br />8. 0:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423142469'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,556 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,556 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,556 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,556 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,556 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,556 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,557 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,557 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,567 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,568 [9] WARN  Ц ёзер _sun_sunych_ сделал 1 прогнозов
+2011-03-31 21:37:21,568 [9] WARN  Ц 1. 2:1<br />2. 3:0<br />3. 2:2<br />4. 2:3<br />5. 0:1<br />6. 1:0<br />7. 1:1<br />8. 0:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423142981'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,568 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,568 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,570 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,570 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,570 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,570 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,570 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,570 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,575 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,577 [9] WARN  Ц ёзер ziobr сделал 1 прогнозов
+2011-03-31 21:37:21,577 [9] WARN  Ц 1. 1:1<br />2. 2:0<br />3. 2:1<br />4. 0:1<br />5. 1:1<br />6. 1:0<br />7. 0:0<br />8. 1:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423143749'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,577 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,577 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,578 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,578 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,578 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,578 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,578 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,578 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,582 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,582 [9] WARN  Ц ёзер john_example сделал 1 прогнозов
+2011-03-31 21:37:21,582 [9] WARN  Ц 1. 1:1<br />2. 0:1<br />3. 0:0<br />4. 0:1<br />5. 1:1<br />6. 1:0<br />7. 0:1<br />8. 0:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423144005'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,582 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,582 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,583 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,583 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,583 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,583 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,583 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,583 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,593 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,593 [9] WARN  Ц ёзер mozyr сделал 1 прогнозов
+2011-03-31 21:37:21,593 [9] WARN  Ц 1. 1:2<br />2. 1:1<br />3. 1:1<br />4. 0:2<br />5. 1:0<br />6. 4:1<br />7. 0:0<br />8. 2:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423148357'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,593 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,593 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,593 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,593 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,594 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,594 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,594 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,594 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,597 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,599 [9] WARN  Ц ёзер kstasa сделал 1 прогнозов
+2011-03-31 21:37:21,599 [9] WARN  Ц 1. 1:1<br />2. 2:0<br />3. 2:0<br />4. 1:3<br />5. 1:1<br />6. 3:0<br />7. 0:1<br />8. 2:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423149893'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,599 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,599 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,601 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,601 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,601 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,601 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,601 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,601 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,605 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,605 [9] WARN  Ц ёзер _kisel_ сделал 1 прогнозов
+2011-03-31 21:37:21,605 [9] WARN  Ц 1. 0:0<br />2. 2:0<br />3. 0:1<br />4. 0:2<br />5. 0:1<br />6. 1:0<br />7. 0:1<br />8. 0:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423151173'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,605 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,605 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,606 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,606 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,606 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,606 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,606 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,606 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,616 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,616 [9] WARN  Ц ёзер dmitriy_sun сделал 1 прогнозов
+2011-03-31 21:37:21,616 [9] WARN  Ц 1. 0:1<br />2. 1:0<br />3. 1:1<br />4. 0:1<br />5. 1:1<br />6. 2:1<br />7. 0:1<br />8. 0:2<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423151685'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,616 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,616 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,617 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,617 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,617 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,617 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,617 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,617 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,621 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,621 [9] WARN  Ц ёзер isvlasov сделал 1 прогнозов
+2011-03-31 21:37:21,621 [9] WARN  Ц 1. 1:2<br />2. 0:0<br />3. 1:1<br />4. 1:2<br />5. 1:3<br />6. 3:0<br />7. 0:0<br />8. 0:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423154501'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,621 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,621 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,622 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,622 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,622 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,622 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,622 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,622 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,626 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,627 [9] WARN  Ц ёзер el_mal_grande сделал 1 прогнозов
+2011-03-31 21:37:21,627 [9] WARN  Ц 1. 2:1<br />2. 2:0<br />3. 3:1<br />4. 1:2<br />5. 0:2<br />6. 3:0<br />7. 1:1<br />8. 1:2<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423155781'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,627 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,627 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,628 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,628 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,628 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,628 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,628 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,629 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,632 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,634 [9] WARN  Ц ёзер lacoste74 сделал 1 прогнозов
+2011-03-31 21:37:21,634 [9] WARN  Ц 1. 2:2<br />2. 1:0<br />3. 2:1<br />4. 1:2<br />5. 0:2<br />6. 3:0<br />7. 0:1<br />8. 0:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423157061'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,634 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,634 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,635 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,635 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,635 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,635 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,635 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,635 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,647 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,647 [9] WARN  Ц ёзер olegze сделал 1 прогнозов
+2011-03-31 21:37:21,647 [9] WARN  Ц 1. 0:0<br />2. 0:1<br />3. 2:1<br />4. 0:1<br />5. 1:3<br />6. 3:0<br />7. 1:2<br />8. 1:2<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423157317'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,647 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,648 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,648 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,648 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,649 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,649 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,649 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,649 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,654 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,655 [9] WARN  Ц ёзер hedinvairendil сделал 1 прогнозов
+2011-03-31 21:37:21,655 [9] WARN  Ц 1. 0:0<br />2. 1:1<br />3. 1:1<br />4. 1:2<br />5. 1:2<br />6. 2:0<br />7. 1:2<br />8. 1:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423159621'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,655 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,655 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,656 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,657 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,657 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,657 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,657 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,657 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,661 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,661 [9] WARN  Ц ёзер 151151 сделал 1 прогнозов
+2011-03-31 21:37:21,661 [9] WARN  Ц 1. 2:1<br />2. 1:1<br />3. 1:0<br />4. 1:2<br />5. 1:1<br />6. 3:0<br />7. 1:2<br />8. 1:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423162181'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,661 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,662 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,662 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,662 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,662 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,662 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,662 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,662 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,672 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,674 [9] WARN  Ц ёзер vasgen_gorapost сделал 1 прогнозов
+2011-03-31 21:37:21,674 [9] WARN  Ц 1. 1:0<br />2. 0:1<br />3. 1:1<br />4. 0:2<br />5. 0:0<br />6. 2:0<br />7. 0:1<br />8. 1:0<br /><p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423164229'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,674 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,674 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,676 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,676 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,676 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,676 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,676 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,676 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,680 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,681 [9] WARN  Ц ёзер loh_ma сделал 1 прогнозов
+2011-03-31 21:37:21,681 [9] WARN  Ц 1. 0:1<br />2. 1:0<br />3. 1:1<br />4. 0:2<br />5. 0:2<br />6. 2:0<br />7. 1:2<br />8. 1:0<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423164997'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,681 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,681 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,681 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,681 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,682 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,682 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,682 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,682 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,685 [9] INFO  Ц SELECT top 2 this_.LJUSER_ID as LJUSER1_1_0_, this_.NAME as NAME1_0_ FROM LJUSER this_ WHERE this_.NAME = @p0
+2011-03-31 21:37:21,686 [9] WARN  Ц ёзер moscow_saint сделал 1 прогнозов
+2011-03-31 21:37:21,686 [9] WARN  Ц 1. 1:2<br />2. 1:0<br />3. 2:0<br />4. 0:1<br />5. 2:1<br />6. 1:0<br />7. 0:0<br />8. 1:1<p style='margin: 0.7em 0 0.2em 0'><font size='-2'>(<a href='http://community.livejournal.com/ru_football/7192133.html?replyto=423167045'>Reply to this</a>) </font></p>
+2011-03-31 21:37:21,686 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,686 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,686 [9] INFO  Ц processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:21,686 [9] INFO  Ц cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,686 [9] INFO  Ц done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,686 [9] INFO  Ц deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,686 [9] INFO  Ц done deleting orphans for collection: Domain.Ljuser.Forecasts
+2011-03-31 21:37:21,686 [9] INFO  Ц done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Domain.Ljuser
+2011-03-31 21:37:24,324 [4] ERROR Ц ќшибка 
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

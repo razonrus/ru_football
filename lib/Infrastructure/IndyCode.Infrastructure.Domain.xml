@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndyCode.Infrastructure.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:IndyCode.Infrastructure.Domain.IQueryBuilder">
+            <summary>
+            Интерфейс для построителя запросов
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IQueryBuilder.For``1">
+            <summary>
+            Начать строить запрос для результата
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.IQueryFactory">
+            <summary>
+            Фабрика объектов запросов
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IQueryFactory.Create``2">
+            <summary>
+            Создать запрос, возвращающий необходимые результаты с определенными критериями
+            </summary>
+            <typeparam name="TCriterion"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.IQuery`2">
+            <summary>
+            Интерфейс для объектов запросов к базе
+            </summary>
+            <typeparam name="TCriterion"></typeparam>
+            <typeparam name="TResult"></typeparam>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IQuery`2.Ask(`0)">
+            <summary>
+            Получить результат из базы
+            </summary>
+            <param name="criterion"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.ICriterion">
+            <summary>
+            Критерии запроса
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.IEntity">
+            <summary>
+            Интерфейс сущности доменной модели
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Domain.IEntity.Id">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.ILinqProvider.Query``1">
+            <summary>
+            Query object for concrete <see cref="T:IndyCode.Infrastructure.Domain.IEntity"/>
+            </summary>
+            <typeparam name="T"><see cref="T:IndyCode.Infrastructure.Domain.IEntity"/></typeparam>
+            <returns><see cref="T:System.Linq.IQueryable`1"/> object for type of T</returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.IQueryFor`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IQueryFor`1.With``1(``0)">
+            <summary>
+            Добавить критерии запроса
+            </summary>
+            <param name="criterion"></param>
+            <typeparam name="TCriterion"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.IRepository`1">
+            <summary>
+             Интерфейс репозитория
+            </summary>
+            <typeparam name="TEntity">Тип сущности доменной модели</typeparam>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IRepository`1.Get(System.Int32)">
+            <summary>
+             Получить сущность по идентификатору. В ряде случаев использование Load более предпочтительно.
+             Подробнее http://ayende.com/Blog/archive/2009/04/30/nhibernate-ndash-the-difference-between-get-load-and-querying-by.aspx
+            </summary>
+            <param name="id"></param>
+            <returns>Сущность с указанным Id, если существует. Иначе - null.</returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IRepository`1.Add(`0)">
+            <summary>
+             Сохранить сущность
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IRepository`1.Remove(`0)">
+            <summary>
+            Удалить сущность
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.ISoftDelete">
+            <summary>
+            Introduce a flag to an existing <see cref="T:IndyCode.Infrastructure.Domain.IEntity"/> which indicates that an entity has been deleted
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.Domain.ISoftDelete.IsDeleted">
+            <summary>
+            A flag
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.QueryFor`1">
+            <summary>
+            Стандартная реализация <see cref="T:IndyCode.Infrastructure.Domain.IQueryFor`1"/>
+            </summary>
+            <typeparam name="TResult"></typeparam>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.QueryFor`1.#ctor(IndyCode.Infrastructure.Domain.IQueryFactory)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.IUnitOfWork">
+            <summary>
+             Единица работы
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IUnitOfWork.Commit">
+            <summary>
+             Сохранить ВСЕ изменения в базу
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IUnitOfWork.Save``1(``0)">
+            <summary>
+            Пометить сущность для сохранения в базу
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IUnitOfWork.Delete``1(``0)">
+            <summary>
+            Пометить сущность для удаления из базы
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Domain.IUnitOfWorkFactory">
+            <summary>
+             Фабрика uow
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IUnitOfWorkFactory.Create(System.Data.IsolationLevel)">
+            <summary>
+             Создает uow, если у uow не будет вызван метод <see cref="M:IndyCode.Infrastructure.Domain.IUnitOfWork.Commit"/>, то автоматически будет выполнен rollback
+            </summary>
+            <param name="isolationLevel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IndyCode.Infrastructure.Domain.IUnitOfWorkFactory.Create">
+            <summary>
+             Создает uow, если у uow не будет вызван метод <see cref="M:IndyCode.Infrastructure.Domain.IUnitOfWork.Commit"/>, то автоматически будет выполнен rollback
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

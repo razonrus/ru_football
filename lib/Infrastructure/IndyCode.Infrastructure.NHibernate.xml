@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndyCode.Infrastructure.NHibernate</name>
+    </assembly>
+    <members>
+        <member name="T:IndyCode.Infrastructure.NHibernate.INHibernateInitializer">
+            <summary>
+             Bootstrapper for nhibernate
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.NHibernate.INHibernateInitializer.GetConfiguration">
+            <summary>
+             Builds and returns nhibernate configuration
+            </summary>
+            <returns>NHibernate configuration object</returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.ISessionProvider">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.NHibernate.ISessionProvider.CurrentSession">
+            <summary>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.Mappings.EntityMap`1">
+            <summary>
+             Предоставляет базовый мапинг для <see cref="!:TEntity"/>
+            </summary>
+            <typeparam name="TEntity">Тип сущности, должен реализовать интерфейс <see cref="T:IndyCode.Infrastructure.Domain.IEntity"/></typeparam>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.PerRequestSessionProvider">
+            <summary>
+            Провайдер для сессии на запрос.
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.NHibernate.PerRequestSessionProvider.#ctor(NHibernate.ISessionFactory)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sessionFactory"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.NHibernateRepositoryBase`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.NHibernate.NHibernateRepositoryBase`1.#ctor(IndyCode.Infrastructure.NHibernate.ISessionProvider)">
+            <summary>
+            </summary>
+            <param name="sessionProvider"></param>
+            <exception cref="T:System.ArgumentNullException"><c>sessionProvider</c> is null.</exception>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.NHibernateRepository`1">
+            <summary>
+            Стандартный репозиторий для NHibernate
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:IndyCode.Infrastructure.NHibernate.NHibernateRepository`1.#ctor(IndyCode.Infrastructure.NHibernate.ISessionProvider)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sessionProvider"></param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.SessionProvider">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.NHibernate.SessionProvider.#ctor(NHibernate.ISessionFactory)">
+            <summary>
+             ctor
+            </summary>
+            <param name="sessionFactory"></param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.NHibernateUnitOfWorkFactory">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:IndyCode.Infrastructure.NHibernate.NHibernateUnitOfWorkFactory.#ctor(NHibernate.ISessionFactory)">
+            <summary>
+             ctor
+            </summary>
+            <param name="sessionFactory"></param>
+        </member>
+        <member name="T:IndyCode.Infrastructure.NHibernate.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.NHibernate.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.NHibernate.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:IndyCode.Infrastructure.NHibernate.Properties.Resources.SessionSupportRequired">
+            <summary>
+              Looks up a localized string similar to Session must be enabled when using Long Conversations! If you are using web services, make sure to use [WebMethod(EnabledSession=true)].
+            </summary>
+        </member>
+    </members>
+</doc>

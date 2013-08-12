@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndyCode.Infrastructure.Logging.Elmah</name>
+    </assembly>
+    <members>
+        <member name="T:IndyCode.Infrastructure.Logging.Elmah.ErrorsLogConsole">
+            <summary>
+            Записывает в лог сообщение об ошибке
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Logging.Elmah.ErrorHandlers.MailHandler">
+            <summary>
+            Логирует ошибки, отправляя их по электронной почте
+            </summary>
+        </member>
+        <member name="T:IndyCode.Infrastructure.Logging.Elmah.ErrorHandlers.XmlErrorHandler">
+            <summary>
+            Сохраняет ошибки в виде XML по уканному пути в файле конфигурации
+            </summary>
+        </member>
+    </members>
+</doc>
