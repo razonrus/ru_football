@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Web.Helpers;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Domain;
 using IndyCode.Infrastructure.Domain;
 using Parser;
 using Selenium;
@@ -57,7 +56,21 @@ namespace ru_football.Controllers
 
         public ActionResult CalculateTourResult()
         {
-            return View(new CalculateTourResultModel());
+            using (unitOfWorkFactory.Create())
+            {
+                var matchesCount = queryFactory.FindAll<Match>().Execute().Count();
+
+                var numbers = "";
+                for (int i = matchesCount - 7; i <= matchesCount; i++)
+                {
+                    numbers += i + ",";
+                }
+
+                return View(new CalculateTourResultModel
+                                {
+                                    Numbers = numbers.TrimEnd(',')
+                                });
+            }
         }
 
         [HttpPost]
@@ -100,7 +113,16 @@ namespace ru_football.Controllers
 
         public ActionResult CalculateTurnirTable()
         {
-            return View(new CalculateTurnirTableModel());
+            using (unitOfWorkFactory.Create())
+            {
+                var matchesCount = queryFactory.FindAll<Match>().Execute().Count();
+
+                return View(new CalculateTurnirTableModel
+                                {
+                                    LastMatchNumber = matchesCount,
+                                    LastMatchNumberOfPreviousTour = matchesCount - 8
+                                });
+            }
         }
 
         [HttpPost]
