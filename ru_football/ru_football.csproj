@@ -202,10 +202,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ITot\Parser\Parser.csproj">
-      <Project>{9F34A961-F3F0-4E28-B88F-20ABF4D65908}</Project>
-      <Name>Parser</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain.NHibernate\Domain.NHibernate.csproj">
       <Project>{8BC6A37E-E8C4-4953-8514-90A73396531C}</Project>
       <Name>Domain.NHibernate</Name>
@@ -213,6 +209,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{2EF124CF-220F-4173-9E71-B6F1B111C67C}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Parser\Parser.csproj">
+      <Project>{9F34A961-F3F0-4E28-B88F-20ABF4D65908}</Project>
+      <Name>Parser</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
