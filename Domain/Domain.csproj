@@ -31,16 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IndyCode.Infrastructure.Common">
+      <HintPath>..\lib\Infrastructure\IndyCode.Infrastructure.Common.dll</HintPath>
+    </Reference>
     <Reference Include="IndyCode.Infrastructure.Domain">
       <HintPath>..\lib\Infrastructure\IndyCode.Infrastructure.Domain.dll</HintPath>
     </Reference>
-    <Reference Include="Infrastructure.Common, Version=1.0.150.0, Culture=neutral, PublicKeyToken=3f07ad7238a3b5ec, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\OS\AssetManagement\lib\Infrastructure\Infrastructure.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Infrastructure.Common.Annotations, Version=1.0.150.0, Culture=neutral, PublicKeyToken=3f07ad7238a3b5ec, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\OS\AssetManagement\lib\Infrastructure\Infrastructure.Common.Annotations.dll</HintPath>
+    <Reference Include="JetBrains.Annotations">
+      <HintPath>..\packages\JetBrains.Annotations.7.0\lib\net40\JetBrains.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
@@ -62,6 +60,9 @@
     <Compile Include="Ljuser.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
