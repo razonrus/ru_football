@@ -1,5 +1,4 @@
-﻿using OS.Infrastructure.Common.Annotations;
-
+﻿using JetBrains.Annotations;
 namespace Domain
 {
     public interface IQuery<out T>
