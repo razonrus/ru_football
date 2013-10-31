@@ -45,7 +45,7 @@ namespace ru_football.Controllers
             selenium.Start();
 
             selenium.Open(model.Url);
-            selenium.WaitForPageToLoad("30000");
+            selenium.WaitForPageToLoad("60000");
             var html = selenium.GetHtmlSource();
             selenium.Stop();
             //            string html = HtmlDownloader.GetHtml(model.Url);

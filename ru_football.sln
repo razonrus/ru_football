@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ru_football", "ru_football\ru_football.csproj", "{6A3CEFCD-A2CC-4E6D-806F-33EF82D5CA58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.NHibernate", "Domain.NHibernate\Domain.NHibernate.csproj", "{8BC6A37E-E8C4-4953-8514-90A73396531C}"
