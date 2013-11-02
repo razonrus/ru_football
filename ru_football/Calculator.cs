@@ -73,20 +73,22 @@ namespace ru_football
             statistic += @"<tr align=""center"">";
             statistic = AddResults(statistic, numbers, matches);
             statistic += @"</tr>";
-            statistic = AddStatisticRow(results, numbers, statistic, "”гаданных счетов<br/>(4 очка)",
+            statistic += AddStatisticRow(results, numbers, "”гаданных счетов<br/>(4 очка)",
                                         ScoreType.ScoreMatch);
-            statistic = AddStatisticRow(results, numbers, statistic, "”гаданных разниц<br/>(2 очка)",
+            statistic += AddStatisticRow(results, numbers, "”гаданных разниц<br/>(2 очка)",
                                         ScoreType.Difference);
-            statistic = AddStatisticRow(results, numbers, statistic, "”гаданных исходов<br/>(1 очко)", ScoreType.Result);
-            statistic = AddStatisticRow(results, numbers, statistic, "”гадано всего<br/>(хот€ бы 1 очко)",
+            statistic += AddStatisticRow(results, numbers, "”гаданных исходов<br/>(1 очко)", ScoreType.Result);
+            statistic += AddStatisticRow(results, numbers, "”гадано всего<br/>(хот€ бы 1 очко)",
                                         ScoreType.Result, ScoreType.ScoreMatch, ScoreType.Difference);
             statistic += @"</table>";
             statistic += "<br/>";
 
             IEnumerable<IGrouping<string, Forecast>> groupedByUser = results.GroupBy(x => x.Ljuser.Name).ToList();
             string best = GetTheBestFromTour(groupedByUser);
+            
+            var avg = string.Format("—реднее количество набранных очков: <b>{0}</b><br/><br/>", groupedByUser.Select(x => x.Sum(z => (int) z.Score)).Average().ToString("F"));
 
-            string html = statistic + best + @"<table border=""3""><tr align=""center"">";
+            string html = statistic + best + avg + @"<table border=""3""><tr align=""center"">";
             html = AddResults(html, numbers, matches);
 
             html += GetTd("");
@@ -528,22 +530,21 @@ namespace ru_football
             return statistic;
         }
 
-        private static string AddStatisticRow(IList<Forecast> resultsWithoutScore, IEnumerable<int> numbers,
-                                              string statistic, string label, params ScoreType[] scoreType)
+        private static string AddStatisticRow(IList<Forecast> resultsWithoutScore, IEnumerable<int> numbers, string label, params ScoreType[] scoreType)
         {
-            statistic += @"<tr align=""center"">";
-            statistic += GetTd(label, 160, "left");
+            var tr = @"<tr align=""center"">";
+            tr += GetTd(label, 160, "left");
             foreach (int number in numbers)
             {
                 decimal count = resultsWithoutScore.Count(x => x.Number == number && scoreType.Contains(x.Score));
-                statistic +=
+                tr +=
                     GetTd(
                         string.Format("{0} ({1}%)", count,
                                       Math.Round(count/resultsWithoutScore.Count(x => x.Number == number)*100)),
                         tag: null);
             }
-            statistic += @"</tr>";
-            return statistic;
+            tr += @"</tr>";
+            return tr;
         }
 
         private string AddResults(string html, IEnumerable<int> numbers, IList<Match> matches)
