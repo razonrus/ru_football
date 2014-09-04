@@ -84,34 +84,33 @@ namespace ru_football
         {
             var article = XpathSelector.Get(html, "//article[contains(@class, 'b-singlepost-body')]").First();
 
-            MatchCollection matches = new Regex(@">\s*(?<number>\d+)\.\s*(?<owner>[А-Яа-я]+)\s*[:-]\s*(?<guest>[А-Яа-я]+)").Matches(article.InnerHtml);
+            MatchCollection matches = new Regex(@">\s*(?<number>\d+)\.\s*(\w*\s+)?(?<owner>[А-Яа-я]+)\s*(\(\w*\))?\s*[:-]\s*(?<guest>[А-Яа-я]+)").Matches(article.InnerHtml);
 
             string resultMessage = "";
 
-            foreach (System.Text.RegularExpressions.Match regexMatch in matches)
+            using (IUnitOfWork uow = unitOfWorkFactory.Create())
             {
-                using (IUnitOfWork uow = unitOfWorkFactory.Create())
+
+                foreach (System.Text.RegularExpressions.Match regexMatch in matches)
                 {
                     var number = int.Parse(regexMatch.Groups["number"].Value);
                     var owners = regexMatch.Groups["owner"].Value;
-                        var guests = regexMatch.Groups["guest"].Value;
+                    var guests = regexMatch.Groups["guest"].Value;
 
                     var match = queryFactory.GetMatchByNumber(number).Execute();
                     if (match == null)
                     {
-                        
                         uow.Save(new Match()
                         {
                             Number = number,
                             Owners = queryFactory.GetCommandByName(owners).Execute(),
                             Guests = queryFactory.GetCommandByName(guests).Execute()
                         });
-
-                        uow.Commit();
                     }
 
                     resultMessage += string.Format("<br/>{0}. {1} - {2}", number, owners, guests);
                 }
+                uow.Commit();
 
             }
             resultMessage += "<br/>";
@@ -177,48 +176,54 @@ namespace ru_football
         public string ParseResult(string html)
         {
             string resultMessage = "";
-            IEnumerable<HtmlNode> matchesTr = XpathSelector.Get(html, "id('interactiveCalendar')//tr[td[3]/a/b[text()!=':']][count(td) = 5]");
+            IEnumerable<HtmlNode> matchesTr = XpathSelector.Get(html, "//table[@class='stat-table']/tbody/tr");
             using (IUnitOfWork uow = unitOfWorkFactory.Create())
             {
                 IEnumerable<Match> allMatches = queryFactory.FindAll<Match>().Execute().ToList();
                 foreach (HtmlNode matchTr in matchesTr)
                 {
-                    int number = int.Parse(XpathSelector.Get(matchTr.OuterHtml, "//td[1]/text()").Single().InnerText);
 
-                    if(number > 240)
-                        continue;
-
-                    string[] commands = XpathSelector.Get(matchTr.OuterHtml, "//td[2]//text()").Single().InnerText.Split(new[] { "&amp;nbsp;&amp;mdash;&amp;nbsp;" }, StringSplitOptions.RemoveEmptyEntries);
-                    string owners = commands.First();
-                    string guests = commands.Last();
-                    string[] scores = XpathSelector.Get(matchTr.OuterHtml, "//td[3]//text()").Single().InnerText.Split(new[] {":"}, StringSplitOptions.RemoveEmptyEntries);
+                    var owners = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='owner-td']//a").Single().InnerText;
+                    var guests = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='guests-td']//a").Single().InnerText;
+                    var dateString = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='name-td alLeft']").Single().InnerText;
+                    var scores = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='score-td']//a").Single().InnerText.Split(new[] {":"}, StringSplitOptions.RemoveEmptyEntries);
                     int ownersGoals = int.Parse(scores.First());
                     int guestsGoals = int.Parse(scores.Last());
 
-                    DateTime date = DateTime.Parse(XpathSelector.Get(matchTr.OuterHtml, "//td[4]/text()").Single().InnerText);
+                    DateTime date = DateTime.Parse(dateString.Replace("|", " "));
 
-                    Match matchFromDb = allMatches.SingleOrDefault(x => x.Number == number);
+                    Match matchFromDb = allMatches.SingleOrDefault(x => x.Guests.Name == guests && x.Owners.Name == owners);
                     if (matchFromDb != null)
                     {
-                        if ((matchFromDb.Guests.Name != guests ||
-                            matchFromDb.GuestsGoals != guestsGoals ||
-                            matchFromDb.Owners.Name != owners ||
-                            matchFromDb.OwnersGoals != ownersGoals) && exclusionsMatchNumber.Contains(number) == false )
-                            throw new ArgumentException(string.Format("Результаты матча {0} не совпадают!", number));
+                        if (matchFromDb.OwnersGoals.HasValue && matchFromDb.GuestsGoals.HasValue)
+                        {
+                            if ((matchFromDb.Guests.Name != guests ||
+                                 matchFromDb.GuestsGoals != guestsGoals ||
+                                 matchFromDb.Owners.Name != owners ||
+                                 matchFromDb.OwnersGoals != ownersGoals))
+                                throw new ArgumentException(string.Format("Результаты матча {0} не совпадают!", owners + "-" + guests));
+                        }
+                        else
+                        {
+                            matchFromDb.GuestsGoals = guestsGoals;
+                            matchFromDb.OwnersGoals = ownersGoals;
+                            matchFromDb.Date = date;
+
+                            resultMessage += string.Format("{0}. {1} - {2} {3}:{4}{5}", matchFromDb.Number, owners, guests, ownersGoals, guestsGoals, Environment.NewLine);
+                        }
                     }
-                    else
-                    {
-                        uow.Save(new Match
-                                     {
-                                         Number = number,
-                                         OwnersGoals = ownersGoals,
-                                         GuestsGoals = guestsGoals,
-                                         Guests = queryFactory.GetCommandByName(guests).Execute(),
-                                         Owners = queryFactory.GetCommandByName(owners).Execute(),
-                                         Date = date
-                                     });
-                        resultMessage += string.Format("{0}. {1} - {2} {3}:{4}{5}", number, owners, guests, ownersGoals, guestsGoals, Environment.NewLine);
-                    }
+//                    else
+//                    {
+//                        uow.Save(new Match
+//                                     {
+//                                         Number = number,
+//                                         OwnersGoals = ownersGoals,
+//                                         GuestsGoals = guestsGoals,
+//                                         Guests = queryFactory.GetCommandByName(guests).Execute(),
+//                                         Owners = queryFactory.GetCommandByName(owners).Execute(),
+//                                         Date = date
+//                                     });
+//                    }
                 }
                 uow.Commit();
             }

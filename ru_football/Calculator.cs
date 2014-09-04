@@ -302,7 +302,7 @@ namespace ru_football
 
 //                var xValues = commandMatches.
                 var xValues = stMatches.
-                    Select(x => string.Format("{0} {1}:{2} {3}", (x.Owners.Id != commandId ? x.Owners.Name + "-" + com : com + "-" + x.Guests.Name), x.OwnersGoals, x.GuestsGoals, x.Date.ToShortDateString()))
+                    Select(x => string.Format("{0} {1}:{2} {3}", (x.Owners.Id != commandId ? x.Owners.Name + "-" + com : com + "-" + x.Guests.Name), x.OwnersGoals, x.GuestsGoals, x.Date.Value.ToShortDateString()))
                     .ToList();
 //                var yValues = forecasts.GroupBy(x => x.Number).Select(RightResultPart).Select(x => Math.Round(x*100)).ToList();
                 var yValues = stForecasts.GroupBy(x => x.Number).Select(RightResultPart).Select(x => Math.Round(x * 100)).ToList();
@@ -452,7 +452,7 @@ namespace ru_football
 
                 statistic += GetTd(matches.Single(x => x.Number == match.Key).Number);
                 statistic += GetTd(matches.Single(x => x.Number == match.Key).Caption(), align: "left");
-                statistic += GetTd(matches.Single(x => x.Number == match.Key).Date.ToShortDateString());
+                statistic += GetTd(matches.Single(x => x.Number == match.Key).Date.Value.ToShortDateString());
                 statistic += GetTd(matches.Single(x => x.Number == match.Key).ToString());
                 statistic += GetTd(match.Count());
                 statistic += GetTd(match.Sum(f => (int) f.Score));
@@ -483,7 +483,7 @@ namespace ru_football
 
                 statistic += GetTd(matches.Single(x => x.Number == match.Key).Number);
                 statistic += GetTd(matches.Single(x => x.Number == match.Key).Caption(), align: "left");
-                statistic += GetTd(matches.Single(x => x.Number == match.Key).Date.ToShortDateString());
+                statistic += GetTd(matches.Single(x => x.Number == match.Key).Date.Value.ToShortDateString());
                 statistic += GetTd(matches.Single(x => x.Number == match.Key).ToString());
                 statistic += GetTd(match.Count());
                 statistic += GetTd(match.Count(f => (int) f.Score > 0));

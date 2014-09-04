@@ -7,15 +7,15 @@ namespace Domain
     {
         public virtual int Number { get; set; }
 
-        public virtual int OwnersGoals { get; set; }
+        public virtual int? OwnersGoals { get; set; }
 
-        public virtual int GuestsGoals { get; set; }
+        public virtual int? GuestsGoals { get; set; }
 
         public virtual Command Owners { get; set; }
 
         public virtual Command Guests { get; set; }
 
-        public virtual DateTime Date { get; set; }
+        public virtual DateTime? Date { get; set; }
 
         #region IEntity Members
 
@@ -25,7 +25,7 @@ namespace Domain
 
         public virtual int GetDifference()
         {
-            return OwnersGoals - GuestsGoals;
+            return OwnersGoals.Value - GuestsGoals.Value;
         }
 
         public new virtual string ToString()
