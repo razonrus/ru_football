@@ -43,7 +43,7 @@ namespace ru_football.Controllers
         {
             selenium = new DefaultSelenium("localhost", 4444, "*firefox", "http://localhost");
             selenium.Start();
-
+            selenium.SetTimeout("120000");
             selenium.Open(model.Url);
             selenium.WaitForPageToLoad("60000");
             var html = selenium.GetHtmlSource();

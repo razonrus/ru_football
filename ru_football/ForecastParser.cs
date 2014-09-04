@@ -82,8 +82,41 @@ namespace ru_football
 
         public string ParseHtml(string html, string url = "")
         {
-            List<HtmlNode> comments = XpathSelector.Get(html, "//div[contains(@class, 'b-tree-twig')]").ToList();
+            var article = XpathSelector.Get(html, "//article[contains(@class, 'b-singlepost-body')]").First();
+
+            MatchCollection matches = new Regex(@">\s*(?<number>\d+)\.\s*(?<owner>[А-Яа-я]+)\s*[:-]\s*(?<guest>[А-Яа-я]+)").Matches(article.InnerHtml);
+
             string resultMessage = "";
+
+            foreach (System.Text.RegularExpressions.Match regexMatch in matches)
+            {
+                using (IUnitOfWork uow = unitOfWorkFactory.Create())
+                {
+                    var number = int.Parse(regexMatch.Groups["number"].Value);
+                    var owners = regexMatch.Groups["owner"].Value;
+                        var guests = regexMatch.Groups["guest"].Value;
+
+                    var match = queryFactory.GetMatchByNumber(number).Execute();
+                    if (match == null)
+                    {
+                        
+                        uow.Save(new Match()
+                        {
+                            Number = number,
+                            Owners = queryFactory.GetCommandByName(owners).Execute(),
+                            Guests = queryFactory.GetCommandByName(guests).Execute()
+                        });
+
+                        uow.Commit();
+                    }
+
+                    resultMessage += string.Format("<br/>{0}. {1} - {2}", number, owners, guests);
+                }
+
+            }
+            resultMessage += "<br/>";
+
+            List<HtmlNode> comments = XpathSelector.Get(html, "//div[contains(@class, 'b-tree-twig')]").ToList();
             int forecastCount = 0;
             foreach (HtmlNode comment in comments)
             {
