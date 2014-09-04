@@ -10,6 +10,11 @@ namespace ru_football.Domain.NHibernate.Queries
 
         public GetCommandByNameQuery(ILinqProvider linqProvider, string name) : base(linqProvider)
         {
+            if (name == "Арсенал")
+                name = "Арсенал Тула";
+            if (name == "Москва")
+                name = "Урал";
+
             this.name = name;
         }
 

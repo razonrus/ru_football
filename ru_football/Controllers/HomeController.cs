@@ -146,7 +146,7 @@ namespace ru_football.Controllers
 
         public ActionResult ParseTourResult()
         {
-            return View(new ParseMatchesResultModel { Url = "http://rfpl.org/calendar" });
+            return View(new ParseMatchesResultModel { Url = "http://www.sports.ru/rfpl/calendar/" });
         }
 
         public ActionResult ParseTourResultEuro2012()
