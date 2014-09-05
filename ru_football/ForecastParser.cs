@@ -183,11 +183,16 @@ namespace ru_football
                 foreach (HtmlNode matchTr in matchesTr)
                 {
 
+                    var scores = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='score-td']//a").Single().InnerText.Split(new[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    int ownersGoals;
+                    if(int.TryParse(scores.First(), out ownersGoals) == false)
+                        break;
+                    
                     var owners = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='owner-td']//a").Single().InnerText;
                     var guests = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='guests-td']//a").Single().InnerText;
                     var dateString = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='name-td alLeft']").Single().InnerText;
-                    var scores = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='score-td']//a").Single().InnerText.Split(new[] {":"}, StringSplitOptions.RemoveEmptyEntries);
-                    int ownersGoals = int.Parse(scores.First());
+                    
                     int guestsGoals = int.Parse(scores.Last());
 
                     DateTime date = DateTime.Parse(dateString.Replace("|", " "));
