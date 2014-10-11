@@ -84,7 +84,11 @@ namespace ru_football
         {
             var article = XpathSelector.Get(html, "//article[contains(@class, 'b-singlepost-body')]").First();
 
-            MatchCollection matches = new Regex(@">\s*(?<number>\d+)\.\s*(\w*\s+)?(?<owner>[А-Яа-я]+)\s*(\(\w*\))?\s*[:-]\s*(?<guest>[А-Яа-я]+)").Matches(article.InnerHtml);
+            var innerHtml = article.InnerHtml
+                .Replace("-Москва", "")
+                .Replace("ПФК", "")
+                ;
+            MatchCollection matches = new Regex(@">\s*(?<number>\d+)\.\s*(\w*\s+)?(?<owner>[А-Яа-я]+)\s*(\(\w*\))?\s*[:-]\s*(?<guest>[А-Яа-я]+)").Matches(innerHtml);
 
             string resultMessage = "";
 
