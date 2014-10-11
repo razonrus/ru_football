@@ -41,6 +41,7 @@ namespace ru_football
 
             IEnumerable<int> numbers = numberString.Split(',').Select(x => int.Parse(x.Trim())).ToList();
 
+            var tablo = "";
             IList<Match> matches;
             using (unitOfWorkFactory.Create())
             {
@@ -53,6 +54,8 @@ namespace ru_football
 
                     if (match == null)
                         throw new NullReferenceException("Матч не сыгран");
+
+                    tablo += string.Format("{0}. {1} — {2} {3}:{4}<br/>", match.Number, match.Owners.Name, match.Guests.Name, match.OwnersGoals, match.GuestsGoals);
 
                     foreach (Forecast forecast in forecasts)
                     {
@@ -88,7 +91,7 @@ namespace ru_football
             
             var avg = string.Format("Среднее количество набранных очков: <b>{0}</b><br/><br/>", groupedByUser.Select(x => x.Sum(z => (int) z.Score)).Average().ToString("F"));
 
-            string html = statistic + best + avg + @"<table border=""3""><tr align=""center"">";
+            string html = tablo + "<br/>" + statistic + best + avg + @"<table border=""3""><tr align=""center"">";
             html = AddResults(html, numbers, matches);
 
             html += GetTd("");
@@ -99,8 +102,7 @@ namespace ru_football
             }
             html += GetTd("");
             html += @"</tr>";
-
-
+            
             foreach (var userForecasts in groupedByUser.OrderBy(x => x.Key))
             {
                 html += @"<tr align=""center"">";

@@ -12,8 +12,6 @@ namespace ru_football.Domain.NHibernate.Queries
         {
             if (name == "Арсенал")
                 name = "Арсенал Тула";
-            if (name == "Москва")
-                name = "Урал";
 
             this.name = name;
         }
