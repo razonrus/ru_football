@@ -88,7 +88,7 @@ namespace ru_football
                 .Replace("-Москва", "")
                 .Replace("ПФК", "")
                 ;
-            MatchCollection matches = new Regex(@">\s*(?<number>\d+)\.\s*(\w*\s+)?(?<owner>[А-Яа-я]+)\s*(\(\w*\))?\s*[:-]\s*(?<guest>[А-Яа-я]+)").Matches(innerHtml);
+            MatchCollection matches = new Regex(@">\s*(?<number>\d+)[.:]\s*(\w*\s+)?(?<owner>[А-Яа-я]+)\s*(\(\w*\))?\s*[:-]\s*(?<guest>[А-Яа-я]+)").Matches(innerHtml);
 
             string resultMessage = "";
 
