@@ -191,7 +191,7 @@ namespace ru_football
 
                     int ownersGoals;
                     if(int.TryParse(scores.First(), out ownersGoals) == false)
-                        break;
+                        continue;
                     
                     var owners = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='owner-td']//a").Single().InnerText;
                     var guests = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='guests-td']//a").Single().InnerText;
