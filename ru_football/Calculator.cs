@@ -609,7 +609,7 @@ namespace ru_football
                 {
                     Match match = allMatches.SingleOrDefault(x => x.Number == forecast.Number);
 
-                    if (match == null)
+                    if (match == null || (match.OwnersGoals == null && match.GuestsGoals == null))
                         continue;
 
                     SetScore(forecast, match);
