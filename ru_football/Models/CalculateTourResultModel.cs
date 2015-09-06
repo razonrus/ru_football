@@ -6,6 +6,7 @@ namespace ru_football.Models
     {
         [DisplayName("Номера матчей тура через запятую")]
         public string Numbers { get; set; }
+        public string Tours { get; set; }
 
         public string Result { get; set; }
     }

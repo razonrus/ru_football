@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Domain;
 using IndyCode.Infrastructure.Domain;
@@ -76,7 +77,33 @@ namespace ru_football.Controllers
         [HttpPost]
         public ActionResult CalculateTourResult(CalculateTourResultModel model)
         {
-            string html = calculator.CalculateTourResult(model.Numbers);
+            if (string.IsNullOrEmpty(model.Numbers) == false)
+            {
+                model.Result = calculator.CalculateTourResult(model.Numbers);
+                return View(model);
+            }
+
+            var tours = model.Tours.Split('-');
+            var start = int.Parse(tours.First());
+            var end = int.Parse(tours.Last());
+
+            string html="";
+            for (int i = start; i <= end; i++)
+            {
+                html += string.Format(@"<lj-cut text=""Результаты {0}-го тура ЧР.""><BR><h4>Результаты {0}-го тура</h4>", i);
+                var numbers = new List<int>();
+                for (int j = (i-1)*8+1; j <= i*8; j++)
+                {
+                    numbers.Add(j);
+                }
+
+                html += calculator.CalculateTourResult(numbers);
+                html += "</lj-cut><BR><BR>";
+            }
+
+            html += string.Format(@"<lj-cut text=""Турнирная таблица после {0}-го тура ЧР.""><BR><h4>Турнирная таблица</h4>", end);
+            html += calculator.CalculateTurnirTable((end-1)*8);
+            html += "</lj-cut>";
 
             model.Result = html;
             return View(model);
@@ -128,9 +155,7 @@ namespace ru_football.Controllers
         [HttpPost]
         public ActionResult CalculateTurnirTable(CalculateTurnirTableModel model)
         {
-            string html = calculator.CalculateTurnirTable(model.LastMatchNumberOfPreviousTour);
-
-            model.Result = html;
+            model.Result = calculator.CalculateTurnirTable(model.LastMatchNumberOfPreviousTour);
             return View(model);
         }
 

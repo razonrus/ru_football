@@ -20,6 +20,7 @@ namespace ru_football
         string CalculatePercentTurnirTable();
         string CalculateBeforeTour(string numbers);
         FileStreamResult Chart(int commandId);
+        string CalculateTourResult(IEnumerable<int> numbers);
     }
 
     public class Calculator : ICalculator
@@ -37,9 +38,14 @@ namespace ru_football
 
         public string CalculateTourResult(string numberString)
         {
-            var results = new List<Forecast>();
-
             IEnumerable<int> numbers = numberString.Split(',').Select(x => int.Parse(x.Trim())).ToList();
+
+            return CalculateTourResult(numbers);
+        }
+
+        public string CalculateTourResult(IEnumerable<int> numbers)
+        {
+            var results = new List<Forecast>();
 
             var tablo = "";
             IList<Match> matches;
@@ -77,18 +83,18 @@ namespace ru_football
             statistic = AddResults(statistic, numbers, matches);
             statistic += @"</tr>";
             statistic += AddStatisticRow(results, numbers, "”гаданных счетов<br/>(4 очка)",
-                                        ScoreType.ScoreMatch);
+                ScoreType.ScoreMatch);
             statistic += AddStatisticRow(results, numbers, "”гаданных разниц<br/>(2 очка)",
-                                        ScoreType.Difference);
+                ScoreType.Difference);
             statistic += AddStatisticRow(results, numbers, "”гаданных исходов<br/>(1 очко)", ScoreType.Result);
             statistic += AddStatisticRow(results, numbers, "”гадано всего<br/>(хот€ бы 1 очко)",
-                                        ScoreType.Result, ScoreType.ScoreMatch, ScoreType.Difference);
+                ScoreType.Result, ScoreType.ScoreMatch, ScoreType.Difference);
             statistic += @"</table>";
             statistic += "<br/>";
 
             IEnumerable<IGrouping<string, Forecast>> groupedByUser = results.GroupBy(x => x.Ljuser.Name).ToList();
             string best = GetTheBestFromTour(groupedByUser);
-            
+
             var avg = string.Format("—реднее количество набранных очков: <b>{0}</b><br/><br/>", groupedByUser.Select(x => x.Sum(z => (int) z.Score)).Average().ToString("F"));
 
             string html = tablo + "<br/>" + statistic + best + avg + @"<table border=""3""><tr align=""center"">";
@@ -102,7 +108,7 @@ namespace ru_football
             }
             html += GetTd("");
             html += @"</tr>";
-            
+
             foreach (var userForecasts in groupedByUser.OrderBy(x => x.Key))
             {
                 html += @"<tr align=""center"">";
