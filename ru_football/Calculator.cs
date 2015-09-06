@@ -583,7 +583,7 @@ namespace ru_football
         private static string GetPlace(IEnumerable<IGrouping<int, IGrouping<string, Forecast>>> orderedUsers, int place,
                                        string endSymbol)
         {
-            if (place >= orderedUsers.Count())
+            if (place > orderedUsers.Count())
                 return string.Empty;
 
             IGrouping<int, IGrouping<string, Forecast>> bestInTour = orderedUsers.ElementAt(place - 1);

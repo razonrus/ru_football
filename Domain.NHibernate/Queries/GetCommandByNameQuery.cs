@@ -12,6 +12,8 @@ namespace ru_football.Domain.NHibernate.Queries
         {
             if (name == "Арсенал")
                 name = "Арсенал Тула";
+            if (name.ToLower().Trim() == "советов" || name.ToLower().Trim() == "крылья")
+                name = "Крылья Советов";
 
             this.name = name;
         }
