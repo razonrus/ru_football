@@ -7,13 +7,19 @@
 
 @using (Html.BeginForm())
 {
-    @Html.TextBoxFor(x => x.Numbers)
-                                   <br />
-    <input type="submit" value="submit" />
-}
+    <label>Номера матчей:</label> @Html.TextBoxFor(x => x.Numbers)
+    <br />
 
-<textarea>
-@Model.Result
-</textarea>
+    <label>
+        Туры:
+    </label>
+     @Html.TextBoxFor(x => x.Tours)
+        <br />
+        <input type="submit" value="submit" />
+        }
 
-@Html.Raw(Model.Result)
+        <textarea>
+            @Model.Result
+        </textarea>
+
+        @Html.Raw(Model.Result)
