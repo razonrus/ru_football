@@ -104,11 +104,19 @@ namespace ru_football
                     var match = queryFactory.GetMatchByNumber(number).Execute();
                     if (match == null)
                     {
-                        uow.Save(new Match()
+                        var guestCommand = queryFactory.GetCommandByName(guests).Execute();
+                        if (guestCommand == null)
+                            uow.Save(guestCommand = new Command {Name = guests});
+
+                        var ownerCommand = queryFactory.GetCommandByName(owners).Execute();
+                        if (ownerCommand == null)
+                            uow.Save(ownerCommand = new Command {Name = owners});
+
+                        uow.Save(new Match
                         {
                             Number = number,
-                            Owners = queryFactory.GetCommandByName(owners).Execute(),
-                            Guests = queryFactory.GetCommandByName(guests).Execute()
+                            Owners = ownerCommand,
+                            Guests = guestCommand
                         });
                     }
 
@@ -193,8 +201,8 @@ namespace ru_football
                     if(int.TryParse(scores.First(), out ownersGoals) == false)
                         continue;
                     
-                    var owners = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='owner-td']//a").Single().InnerText;
-                    var guests = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='guests-td']//a").Single().InnerText;
+                    var owners = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='owner-td']//a").Single().InnerText.Replace(" Москва", "");
+                    var guests = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='guests-td']//a").Single().InnerText.Replace(" Москва", "");
                     var dateString = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='name-td alLeft']").Single().InnerText;
                     
                     int guestsGoals = int.Parse(scores.Last());
@@ -233,65 +241,6 @@ namespace ru_football
 //                                         Date = date
 //                                     });
 //                    }
-                }
-                uow.Commit();
-            }
-            return resultMessage;
-        }
-
-        public string ParseResultEuro2012(string html)
-        {
-            string resultMessage = "";
-            const string xpathMatchTr = "//table[@class='date20111115']/following::tr[contains(@class, 'match_res')][td[@class='c b score nob'][a]]";
-            IEnumerable<HtmlNode> matchesTr = XpathSelector.Get(html, xpathMatchTr);
-            using (IUnitOfWork uow = unitOfWorkFactory.Create())
-            {
-                IEnumerable<Match> allMatches = queryFactory.FindAll<Match>().Execute().ToList();
-                var matchNumber = 31;
-                foreach (HtmlNode matchTr in matchesTr)
-                {
-                    int number = matchNumber;
-                    string owners = XpathSelector.Get(matchTr.OuterHtml, "//td[1]//text()").Single().InnerText;
-                    string guests = XpathSelector.Get(matchTr.OuterHtml, "//td[5]//text()").Single().InnerText;
-
-                    string[] scores = XpathSelector.Get(matchTr.OuterHtml, "//td[3]//text()").Single().InnerText.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
-                    int ownersGoals = int.Parse(scores.First());
-                    int guestsGoals = int.Parse(scores.Last());
-
-                    DateTime date = DateTime.Parse(XpathSelector.Get(html, string.Format("{0}[{1}]/preceding-sibling::tr//span[@class='b dateT']", xpathMatchTr, 1)).Single().InnerText);
-
-                    Match matchFromDb = allMatches.SingleOrDefault(x => x.Number == number);
-                    if (matchFromDb != null)
-                    {
-                        if ((matchFromDb.Guests.Name != guests ||
-                            matchFromDb.GuestsGoals != guestsGoals ||
-                            matchFromDb.Owners.Name != owners ||
-                            matchFromDb.OwnersGoals != ownersGoals) && exclusionsMatchNumber.Contains(number) == false )
-                            throw new ArgumentException(string.Format("Результаты матча {0} не совпадают!", number));
-                    }
-                    else
-                    {
-                        var guestCommand = queryFactory.GetCommandByName(guests).Execute();
-                        if (guestCommand == null)
-                            uow.Save(guestCommand = new Command {Name = guests});
-
-                        var ownerCommand = queryFactory.GetCommandByName(owners).Execute();
-                        if (ownerCommand == null)
-                            uow.Save(ownerCommand = new Command { Name = owners });
-
-                        uow.Save(new Match
-                                     {
-                                         Number = number,
-                                         OwnersGoals = ownersGoals,
-                                         GuestsGoals = guestsGoals,
-                                         Guests = guestCommand,
-                                         Owners = ownerCommand,
-                                         Date = date
-                                     });
-                        resultMessage += string.Format("{0}. {1} - {2} {3}:{4}{5}", number, owners, guests, ownersGoals, guestsGoals, Environment.NewLine);
-                    }
-
-                    matchNumber += 1;
                 }
                 uow.Commit();
             }

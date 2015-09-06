@@ -148,12 +148,7 @@ namespace ru_football.Controllers
         {
             return View(new ParseMatchesResultModel { Url = "http://www.sports.ru/rfpl/calendar/" });
         }
-
-        public ActionResult ParseTourResultEuro2012()
-        {
-            return View("ParseTourResult",new ParseMatchesResultModel { Url = "http://ru.uefa.com/uefaeuro/season=2012/matches/all/index.html" });
-        }
-
+        
         [HttpPost]
         public ActionResult ParseTourResult(ParseMatchesResultModel model)
         {
@@ -162,14 +157,6 @@ namespace ru_football.Controllers
             return View(new ParseMatchesResultModel { Result = s });
         }
         
-        [HttpPost]
-        public ActionResult ParseTourResultEuro2012(ParseMatchesResultModel model)
-        {
-            string html = HtmlDownloader.GetHtml(model.Url);
-            string s = new ForecastParser(queryFactory, log, unitOfWorkFactory).ParseResultEuro2012(html);
-            return View("ParseTourResult", new ParseMatchesResultModel { Result = s });
-        }
-
         public ActionResult BeforeTour()
         {
             return View(new BeforeTourModel());
