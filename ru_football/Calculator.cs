@@ -1,4 +1,4 @@
-п»їusing System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -59,9 +59,9 @@ namespace ru_football
                     Match match = matches.SingleOrDefault(x => x.Number == number);
 
                     if (match == null)
-                        throw new NullReferenceException("РњР°С‚С‡ РЅРµ СЃС‹РіСЂР°РЅ");
+                        throw new NullReferenceException("Матч не сыгран");
 
-                    tablo += string.Format("{0}. {1} вЂ” {2} {3}:{4}<br/>", match.Number, match.Owners.Name, match.Guests.Name, match.OwnersGoals, match.GuestsGoals);
+                    tablo += string.Format("{0}. {1} — {2} {3}:{4}<br/>", match.Number, match.Owners.Name, match.Guests.Name, match.OwnersGoals, match.GuestsGoals);
 
                     foreach (Forecast forecast in forecasts)
                     {
@@ -72,8 +72,8 @@ namespace ru_football
                 }
             }
 
-            string statistic = @"<u>РЎС‚Р°С‚РёСЃС‚РёРєР° С‚СѓСЂР°:</u><br/><table border=""3""><tr align=""center"">";
-            statistic += GetTd("РќРѕРјРµСЂ РјР°С‚С‡Р°", 160, "left");
+            string statistic = @"<u>Статистика тура:</u><br/><table border=""3""><tr align=""center"">";
+            statistic += GetTd("Номер матча", 160, "left");
             foreach (int number in numbers)
             {
                 statistic += GetTd(number);
@@ -82,12 +82,12 @@ namespace ru_football
             statistic += @"<tr align=""center"">";
             statistic = AddResults(statistic, numbers, matches);
             statistic += @"</tr>";
-            statistic += AddStatisticRow(results, numbers, "РЈРіР°РґР°РЅРЅС‹С… СЃС‡РµС‚РѕРІ<br/>(4 РѕС‡РєР°)",
+            statistic += AddStatisticRow(results, numbers, "Угаданных счетов<br/>(4 очка)",
                 ScoreType.ScoreMatch);
-            statistic += AddStatisticRow(results, numbers, "РЈРіР°РґР°РЅРЅС‹С… СЂР°Р·РЅРёС†<br/>(2 РѕС‡РєР°)",
+            statistic += AddStatisticRow(results, numbers, "Угаданных разниц<br/>(2 очка)",
                 ScoreType.Difference);
-            statistic += AddStatisticRow(results, numbers, "РЈРіР°РґР°РЅРЅС‹С… РёСЃС…РѕРґРѕРІ<br/>(1 РѕС‡РєРѕ)", ScoreType.Result);
-            statistic += AddStatisticRow(results, numbers, "РЈРіР°РґР°РЅРѕ РІСЃРµРіРѕ<br/>(С…РѕС‚СЏ Р±С‹ 1 РѕС‡РєРѕ)",
+            statistic += AddStatisticRow(results, numbers, "Угаданных исходов<br/>(1 очко)", ScoreType.Result);
+            statistic += AddStatisticRow(results, numbers, "Угадано всего<br/>(хотя бы 1 очко)",
                 ScoreType.Result, ScoreType.ScoreMatch, ScoreType.Difference);
             statistic += @"</table>";
             statistic += "<br/>";
@@ -95,7 +95,7 @@ namespace ru_football
             IEnumerable<IGrouping<string, Forecast>> groupedByUser = results.GroupBy(x => x.Ljuser.Name).ToList();
             string best = GetTheBestFromTour(groupedByUser);
 
-            var avg = string.Format("РЎСЂРµРґРЅРµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅР°Р±СЂР°РЅРЅС‹С… РѕС‡РєРѕРІ: <b>{0}</b><br/><br/>", groupedByUser.Select(x => x.Sum(z => (int) z.Score)).Average().ToString("F"));
+            var avg = string.Format("Среднее количество набранных очков: <b>{0}</b><br/><br/>", groupedByUser.Select(x => x.Sum(z => (int) z.Score)).Average().ToString("F"));
 
             string html = tablo + "<br/>" + statistic + best + avg + @"<table border=""3""><tr align=""center"">";
             html = AddResults(html, numbers, matches);
@@ -195,11 +195,11 @@ namespace ru_football
                 IEnumerable<Command> commands = queryFactory.FindAll<Command>().Execute();
 
                 statistic += @"<table border=""3""><tr align=""center"">";
-                statistic += GetTd("РљРѕРјР°РЅРґР°");
-                statistic += GetTd("РЈРіР°РґР°РЅРѕ РёСЃС…РѕРґРѕРІ РІ СЃСЂРµРґРЅРµРј Р·Р° РїСЂРѕРіРЅРѕР· РІ РјР°С‚С‡Р°С… СЃ РµС‘ СѓС‡Р°СЃС‚РёРµРј");
-                statistic += GetTd("РќР°Р±СЂР°РЅРѕ РѕС‡РєРѕРІ РІ СЃСЂРµРґРЅРµРј Р·Р° РїСЂРѕРіРЅРѕР· РІ РјР°С‚С‡Р°С… СЃ РµС‘ СѓС‡Р°СЃС‚РёРµРј");
-                statistic += GetTd("РЈРіР°РґР°РЅРѕ РёСЃС…РѕРґРѕРІ РІ СЃСЂРµРґРЅРµРј Р·Р° РїСЂРѕРіРЅРѕР· РІ РґРѕРјР°С€РЅРёС… РјР°С‚С‡Р°С…");
-                statistic += GetTd("РЈРіР°РґР°РЅРѕ РёСЃС…РѕРґРѕРІ РІ СЃСЂРµРґРЅРµРј Р·Р° РїСЂРѕРіРЅРѕР· РІ РіРѕСЃС‚РµРІС‹С… РјР°С‚С‡Р°С…");
+                statistic += GetTd("Команда");
+                statistic += GetTd("Угадано исходов в среднем за прогноз в матчах с её участием");
+                statistic += GetTd("Набрано очков в среднем за прогноз в матчах с её участием");
+                statistic += GetTd("Угадано исходов в среднем за прогноз в домашних матчах");
+                statistic += GetTd("Угадано исходов в среднем за прогноз в гостевых матчах");
                 statistic += @"</tr>";
 
                 foreach (Command command in commands
@@ -361,14 +361,14 @@ namespace ru_football
                 }
 
 
-                string statistic = StatisticBeforeTour(results, numbers, "РџСЂРѕРіРЅРѕР·С‹ С‚СѓСЂР°");
+                string statistic = StatisticBeforeTour(results, numbers, "Прогнозы тура");
 
 
                 statistic += "<br/>";
 
                 IEnumerable<string> orderedLjusers = OrderedLjusers(0).Take(10).Select(x => x.Key.Name);
                 statistic += StatisticBeforeTour(results.Where(x => orderedLjusers.Contains(x.Ljuser.Name)).ToList(),
-                                                 numbers, @"РџСЂРѕРіРЅРѕР·С‹ С‚РѕРї-10");
+                                                 numbers, @"Прогнозы топ-10");
 
                 return statistic;
             }
@@ -377,14 +377,14 @@ namespace ru_football
         public string CalculateTurnirTable(int lastMatchNumberOfPreviousTour)
         {
             string html = @"<table border=""3""><tr align=""center"">";
-            html += GetTd("в„–", 30);
+            html += GetTd("№", 30);
             html += GetTd("d", 50);
             html += GetTd("ljuser", 200, "left");
-            html += GetTd("РњР°С‚С‡РµР№", 70);
-            html += GetTd("РЎС‡РµС‚", 70);
-            html += GetTd("Р Р°Р·РЅРёС†Р°", 70);
-            html += GetTd("РСЃС…РѕРґ", 70);
-            html += GetTd("РћС‡РєРё", 70);
+            html += GetTd("Матчей", 70);
+            html += GetTd("Счет", 70);
+            html += GetTd("Разница", 70);
+            html += GetTd("Исход", 70);
+            html += GetTd("Очки", 70);
             html += "</tr>";
 
             IEnumerable<IGrouping<Ljuser, Forecast>> orderedEnumerable = OrderedLjusers(lastMatchNumberOfPreviousTour);
@@ -411,13 +411,13 @@ namespace ru_football
         public string CalculatePercentTurnirTable()
         {
             string html = @"<table border=""3""><tr align=""center"">";
-            html += GetTd("в„–", 30);
+            html += GetTd("№", 30);
             html += GetTd("ljuser", 200, "left");
-            html += GetTd("РњР°С‚С‡РµР№", 70);
+            html += GetTd("Матчей", 70);
 
 
-            html += GetTd("РћС‡РєРё", 70);
-            html += GetTd("РћС‡РєРѕРІ Р·Р° РјР°С‚С‡", 70);
+            html += GetTd("Очки", 70);
+            html += GetTd("Очков за матч", 70);
             html += "</tr>";
 
             IEnumerable<IGrouping<Ljuser, Forecast>> orderedEnumerable = OrderedByPercentLjusers();
@@ -445,13 +445,13 @@ namespace ru_football
                                                      IList<Match> matches)
         {
             string statistic = @"<table border=""3""><tr align=""center"">";
-            statistic += GetTd("РќРѕРјРµСЂ");
-            statistic += GetTd("РњР°С‚С‡");
-            statistic += GetTd("Р”Р°С‚Р°");
-            statistic += GetTd("Р РµР·СѓР»СЊС‚Р°С‚");
-            statistic += GetTd("РљРѕР»-РІРѕ РїСЂРѕРіРЅРѕР·РѕРІ");
-            statistic += GetTd("РљРѕР»-РІРѕ РЅР°Р±СЂР°РЅРЅС‹С… РѕС‡РєРѕРІ");
-            statistic += GetTd("РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РЅР°Р±СЂР°РЅРЅС‹С… РѕС‡РєРѕРІ");
+            statistic += GetTd("Номер");
+            statistic += GetTd("Матч");
+            statistic += GetTd("Дата");
+            statistic += GetTd("Результат");
+            statistic += GetTd("Кол-во прогнозов");
+            statistic += GetTd("Кол-во набранных очков");
+            statistic += GetTd("Среднее кол-во набранных очков");
             statistic += @"</tr>";
 
             foreach (var match in bestScoreToCount)
@@ -476,13 +476,13 @@ namespace ru_football
                                                              IList<Match> matches)
         {
             string statistic = @"<table border=""3""><tr align=""center"">";
-            statistic += GetTd("РќРѕРјРµСЂ");
-            statistic += GetTd("РњР°С‚С‡");
-            statistic += GetTd("Р”Р°С‚Р°");
-            statistic += GetTd("Р РµР·СѓР»СЊС‚Р°С‚");
-            statistic += GetTd("РљРѕР»-РІРѕ РїСЂРѕРіРЅРѕР·РѕРІ");
-            statistic += GetTd("РљРѕР»-РІРѕ СѓРіР°РґР°РЅРЅС‹С… РёСЃС…РѕРґРѕРІ");
-            statistic += GetTd("РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ СѓРіР°РґР°РЅРЅС‹С… РёСЃС…РѕРґРѕРІ");
+            statistic += GetTd("Номер");
+            statistic += GetTd("Матч");
+            statistic += GetTd("Дата");
+            statistic += GetTd("Результат");
+            statistic += GetTd("Кол-во прогнозов");
+            statistic += GetTd("Кол-во угаданных исходов");
+            statistic += GetTd("Среднее кол-во угаданных исходов");
             statistic += @"</tr>";
 
             foreach (var match in bestScoreToCount)
@@ -506,17 +506,17 @@ namespace ru_football
         private static string StatisticBeforeTour(List<Forecast> results, IEnumerable<int> numbers, string caption)
         {
             string statistic = @"<u>" + caption + @":</u><br/><table border=""3""><tr align=""center"">";
-            statistic += GetTd("РќРѕРјРµСЂ РјР°С‚С‡Р°", 160, "left");
+            statistic += GetTd("Номер матча", 160, "left");
             foreach (int number in numbers)
             {
                 statistic += GetTd(number);
             }
             statistic += @"</tr>";
-            statistic = AddForecastStatisticRow(results, statistic, numbers, "РџРѕР±РµРґР° С…РѕР·СЏРµРІ",
+            statistic = AddForecastStatisticRow(results, statistic, numbers, "Победа хозяев",
                                                 x => x.OwnersGoals > x.GuestsGoals);
-            statistic = AddForecastStatisticRow(results, statistic, numbers, "РќРёС‡СЊСЏ",
+            statistic = AddForecastStatisticRow(results, statistic, numbers, "Ничья",
                                                 x => x.OwnersGoals == x.GuestsGoals);
-            statistic = AddForecastStatisticRow(results, statistic, numbers, "РџРѕР±РµРґР° РіРѕСЃС‚РµР№",
+            statistic = AddForecastStatisticRow(results, statistic, numbers, "Победа гостей",
                                                 x => x.OwnersGoals < x.GuestsGoals);
             statistic += @"</table>";
             return statistic;
@@ -557,13 +557,13 @@ namespace ru_football
 
         private string AddResults(string html, IEnumerable<int> numbers, IList<Match> matches)
         {
-            html += GetTd("РЎС‡РµС‚", 160, "left");
+            html += GetTd("Счет", 160, "left");
             foreach (int number in numbers)
             {
                 Match match = matches.SingleOrDefault(x => x.Number == number);
 
                 if (match == null)
-                    throw new NullReferenceException("РњР°С‚С‡ РЅРµ СЃС‹РіСЂР°РЅ");
+                    throw new NullReferenceException("Матч не сыгран");
 
                 html += GetTd(match.ToString());
             }
@@ -575,11 +575,11 @@ namespace ru_football
             IOrderedEnumerable<IGrouping<int, IGrouping<string, Forecast>>> orderedUsers = groupedByUser
                 .GroupBy(z => z.Sum(x => (int) x.Score))
                 .OrderByDescending(x => x.Key);
-            string best = "<u>Р›СѓС‡С€РёРµ РІ С‚СѓСЂРµ:</u><br/>";
+            string best = "<u>Лучшие в туре:</u><br/>";
             best += GetPlace(orderedUsers, 1, ",");
             best += GetPlace(orderedUsers, 2, ",");
             best += GetPlace(orderedUsers, 3, ".");
-            best += "<u>РҐСѓРґС€РёРµ РІ С‚СѓСЂРµ:</u><br/>";
+            best += "<u>Худшие в туре:</u><br/>";
             best += GetPlace(orderedUsers, orderedUsers.Count() - 1, ",");
             best += GetPlace(orderedUsers, orderedUsers.Count(), ".");
             best += "<br/>";
@@ -594,11 +594,31 @@ namespace ru_football
 
             IGrouping<int, IGrouping<string, Forecast>> bestInTour = orderedUsers.ElementAt(place - 1);
             string aggregate = bestInTour
-                .Aggregate("<b>" + place + "-Рµ РјРµСЃС‚Рѕ</b> РІ С‚СѓСЂРµ ",
-                           (current, q) => current + (LjUserTag(q.First().Ljuser.Name) + ", "));
-            aggregate = string.Format("{0}: {1} РѕС‡РєРѕРІ{2}<br/>", aggregate.Trim(' ', ','), bestInTour.Key, endSymbol);
+                .Aggregate("<b>" + place + "-е место</b> в туре ",
+                           (current, q) => current + LjUserTag(q.First().Ljuser.Name) + ", ");
+
+            aggregate = $"{aggregate.Trim(' ', ',')}: {bestInTour.Key} {ScoreText(bestInTour.Key)}{endSymbol}<br/>";
 
             return aggregate;
+        }
+
+        private static string ScoreText(int score)
+        {
+            switch (score)
+            {
+                case 1:
+                case 21:
+                    return "очко";
+                case 2:
+                case 22:
+                case 3:
+                case 23:
+                case 4:
+                case 24:
+                    return "очка";
+                default:
+                    return  "очков";
+            }
         }
 
         private IEnumerable<IGrouping<Ljuser, Forecast>> OrderedLjusers(int lastMatchNumberOfPreviousTour)
