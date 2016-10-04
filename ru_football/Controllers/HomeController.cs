@@ -102,7 +102,7 @@ namespace ru_football.Controllers
             }
 
             html += string.Format(@"<lj-cut text=""Турнирная таблица после {0}-го тура ЧР.""><BR><h4>Турнирная таблица</h4>", end);
-            html += calculator.CalculateTurnirTable((end-1)*8);
+            html += calculator.CalculateTurnirTable((start-1)*8);
             html += "</lj-cut>";
 
             model.Result = html;
