@@ -59,7 +59,7 @@ namespace ru_football
                 }
 
                 return forecasts
-                    .GroupBy(x => x.Number/8 + 1)
+                    .GroupBy(x => (x.Number-1)/8 + 1)
                     .ToDictionary(x => x.Key, x => x.Sum(f => (int) f.Score));
             }
         }
