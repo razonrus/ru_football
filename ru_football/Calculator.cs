@@ -20,7 +20,8 @@ namespace ru_football
         string CalculatePercentTurnirTable();
         string CalculateBeforeTour(string numbers);
         FileStreamResult Chart(int commandId);
-        string CalculateTourResult(IEnumerable<int> numbers);
+        string CalculateTourResult(IEnumerable<int> matchNumbers);
+        Dictionary<int, int> CalculateForUser(string userName);
     }
 
     public class Calculator : ICalculator
@@ -43,7 +44,27 @@ namespace ru_football
             return CalculateTourResult(numbers);
         }
 
-        public string CalculateTourResult(IEnumerable<int> numbers)
+        public Dictionary<int, int> CalculateForUser(string userName)
+        {
+            using (unitOfWorkFactory.Create())
+            {
+                var matches = queryFactory.FindAll<Match>().Execute().ToList();
+                var forecasts = queryFactory.FindAll<Forecast>().Execute().Where(x => x.Ljuser.Name == userName).ToList();
+
+                foreach (var match in matches)
+                {
+                    var forecast = forecasts.SingleOrDefault(x=>x.Number == match.Number);
+                    if (forecast != null)
+                        SetScore(forecast, match);
+                }
+
+                return forecasts
+                    .GroupBy(x => x.Number/8 + 1)
+                    .ToDictionary(x => x.Key, x => x.Sum(f => (int) f.Score));
+            }
+        }
+
+        public string CalculateTourResult(IEnumerable<int> matchNumbers)
         {
             var results = new List<Forecast>();
 
@@ -53,15 +74,15 @@ namespace ru_football
             {
                 matches = queryFactory.FindAll<Match>().Execute().ToList();
 
-                foreach (int number in numbers)
+                foreach (int matchNumber in matchNumbers)
                 {
-                    IEnumerable<Forecast> forecasts = queryFactory.GetForecastsByNumber(number).Execute();
-                    Match match = matches.SingleOrDefault(x => x.Number == number);
+                    var forecasts = queryFactory.GetForecastsByNumber(matchNumber).Execute();
+                    Match match = matches.SingleOrDefault(x => x.Number == matchNumber);
 
                     if (match == null)
                         throw new NullReferenceException("ћатч не сыгран");
 
-                    tablo += string.Format("{0}. {1} Ч {2} {3}:{4}<br/>", match.Number, match.Owners.Name, match.Guests.Name, match.OwnersGoals, match.GuestsGoals);
+                    tablo += $"{match.Number}. {match.Owners.Name} Ч {match.Guests.Name} {match.OwnersGoals}:{match.GuestsGoals}<br/>";
 
                     foreach (Forecast forecast in forecasts)
                     {
@@ -74,20 +95,20 @@ namespace ru_football
 
             string statistic = @"<u>—татистика тура:</u><br/><table border=""3""><tr align=""center"">";
             statistic += GetTd("Ќомер матча", 160, "left");
-            foreach (int number in numbers)
+            foreach (int number in matchNumbers)
             {
                 statistic += GetTd(number);
             }
             statistic += @"</tr>";
             statistic += @"<tr align=""center"">";
-            statistic = AddResults(statistic, numbers, matches);
+            statistic = AddResults(statistic, matchNumbers, matches);
             statistic += @"</tr>";
-            statistic += AddStatisticRow(results, numbers, "”гаданных счетов<br/>(4 очка)",
+            statistic += AddStatisticRow(results, matchNumbers, "”гаданных счетов<br/>(4 очка)",
                 ScoreType.ScoreMatch);
-            statistic += AddStatisticRow(results, numbers, "”гаданных разниц<br/>(2 очка)",
+            statistic += AddStatisticRow(results, matchNumbers, "”гаданных разниц<br/>(2 очка)",
                 ScoreType.Difference);
-            statistic += AddStatisticRow(results, numbers, "”гаданных исходов<br/>(1 очко)", ScoreType.Result);
-            statistic += AddStatisticRow(results, numbers, "”гадано всего<br/>(хот€ бы 1 очко)",
+            statistic += AddStatisticRow(results, matchNumbers, "”гаданных исходов<br/>(1 очко)", ScoreType.Result);
+            statistic += AddStatisticRow(results, matchNumbers, "”гадано всего<br/>(хот€ бы 1 очко)",
                 ScoreType.Result, ScoreType.ScoreMatch, ScoreType.Difference);
             statistic += @"</table>";
             statistic += "<br/>";
@@ -98,11 +119,11 @@ namespace ru_football
             var avg = string.Format("—реднее количество набранных очков: <b>{0}</b><br/><br/>", groupedByUser.Select(x => x.Sum(z => (int) z.Score)).Average().ToString("F"));
 
             string html = tablo + "<br/>" + statistic + best + avg + @"<table border=""3""><tr align=""center"">";
-            html = AddResults(html, numbers, matches);
+            html = AddResults(html, matchNumbers, matches);
 
             html += GetTd("");
             html += @"</tr><tr align=""center"">" + GetTd("ljuser", null, "left");
-            foreach (int number in numbers)
+            foreach (int number in matchNumbers)
             {
                 html += GetTd(number, 35);
             }
@@ -113,7 +134,7 @@ namespace ru_football
             {
                 html += @"<tr align=""center"">";
                 html += GetTd(LjUserTag(userForecasts.Key), null, "left");
-                foreach (int number in numbers)
+                foreach (int number in matchNumbers)
                 {
                     Forecast forecast = userForecasts.SingleOrDefault(x => x.Number == number);
                     string content = forecast != null ? forecast.ToTag() : "<s>X:X</s>";

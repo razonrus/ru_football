@@ -163,6 +163,7 @@
     <Compile Include="Models\ForecastDto.cs" />
     <Compile Include="Models\ParseMatchesResultModel.cs" />
     <Compile Include="Models\ParseUrlModel.cs" />
+    <Compile Include="Models\UserStatsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterRoutes.cs" />
     <Compile Include="WindsorInstaller.cs" />
@@ -180,6 +181,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Home\Chart.cshtml" />
+    <Content Include="Views\Home\UserStatistic.cshtml" />
     <None Include="Views\Home\ParseTourFromUrl.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

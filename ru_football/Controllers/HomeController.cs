@@ -39,6 +39,18 @@ namespace ru_football.Controllers
             return View();
         }
 
+        public ActionResult UserStatistic()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UserStatistic(UserStatsModel model)
+        {
+            model.Result = calculator.CalculateForUser(model.Name);
+            return View(model);
+        }
+
         [HttpPost]
         public ActionResult ParseTourFromUrl(ParseUrlModel model)
         {
