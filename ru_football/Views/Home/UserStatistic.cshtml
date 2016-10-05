@@ -17,15 +17,17 @@
 {
     <script src="../../Scripts/Chart.js"></script>
 
-    <canvas id="myChart" width="400" height="400"></canvas>
-    <script>
+    <div style="max-width: 800px; max-height: 400px;">
+        <canvas id="myChart" width="800" height="400"></canvas>
+    </div>
+        <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: [@Html.Raw(string.Join(",", Model.Result.Keys))],
         datasets: [{
-            label: '# of Votes',
+            label: 'очки в туре',
             data: [@Html.Raw(string.Join(",", Model.Result.Values))],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
