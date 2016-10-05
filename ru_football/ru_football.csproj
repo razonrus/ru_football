@@ -26,6 +26,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -169,6 +170,8 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Views\Home\CalculateTourResult.cshtml" />
     <Content Include="Views\Home\CalculateTurnirTable.cshtml" />
     <Content Include="Views\Home\ParseTourResult.cshtml" />
