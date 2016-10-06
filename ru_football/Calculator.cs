@@ -21,11 +21,12 @@ namespace ru_football
         string CalculateBeforeTour(string numbers);
         FileStreamResult Chart(int commandId);
         string CalculateTourResult(IEnumerable<int> matchNumbers);
-        Dictionary<int, int> CalculateForUser(string userName);
+        Dictionary<int, Dictionary<string, double>> CalculateForUser(string userName);
     }
 
     public class Calculator : ICalculator
     {
+        public const string NameForAvg = "_avg___";
         private readonly IQueryFactory queryFactory;
         private readonly IUnitOfWorkFactory unitOfWorkFactory;
 
@@ -44,23 +45,39 @@ namespace ru_football
             return CalculateTourResult(numbers);
         }
 
-        public Dictionary<int, int> CalculateForUser(string userName)
+        public Dictionary<int, Dictionary<string, double>> CalculateForUser(string userName)
         {
             using (unitOfWorkFactory.Create())
             {
                 var matches = queryFactory.FindAll<Match>().Execute().ToList();
-                var forecasts = queryFactory.FindAll<Forecast>().Execute().Where(x => x.Ljuser.Name == userName).ToList();
+                var allForecasts = queryFactory.FindAll<Forecast>().Execute().ToList();
 
                 foreach (var match in matches)
                 {
-                    var forecast = forecasts.SingleOrDefault(x=>x.Number == match.Number);
-                    if (forecast != null)
+                    foreach (var forecast in allForecasts.Where(x => x.Number == match.Number))
+                    {
                         SetScore(forecast, match);
+                    }
                 }
 
-                return forecasts
-                    .GroupBy(x => (x.Number-1)/8 + 1)
-                    .ToDictionary(x => x.Key, x => x.Sum(f => (int) f.Score));
+                var dictionary = allForecasts
+                    .GroupBy(x => (x.Number - 1)/8 + 1)
+                    .ToDictionary(x => x.Key, x =>
+                    {
+                        return new Dictionary<string, double>()
+                        {
+                            {NameForAvg, x.Sum(f => (int) f.Score)/(double) x.Select(f => f.Ljuser.Name).Distinct().Count()},
+                            {userName, x.Where(f => f.Ljuser.Name == userName).Sum(f => (int) f.Score)}
+                        };
+                    });
+
+                foreach (var key in dictionary.Keys.ToList())
+                {
+                    if (dictionary[key].All(d => Math.Abs(d.Value) < 0.01))
+                        dictionary.Remove(key);
+                }
+
+                return dictionary;
             }
         }
 

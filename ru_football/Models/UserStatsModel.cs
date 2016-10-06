@@ -8,6 +8,6 @@ namespace ru_football.Models
         [DisplayName("Имя пользователя")]
         public string Name { get; set; }
 
-        public Dictionary<int, int> Result { get; set; }
+        public Dictionary<int, Dictionary<string, double>> Result { get; set; }
     }
 }
