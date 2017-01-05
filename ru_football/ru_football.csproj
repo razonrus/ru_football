@@ -182,6 +182,7 @@
     </Content>
     <Content Include="Views\Home\Chart.cshtml" />
     <Content Include="Views\Home\UserStatistic.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\ParseTourFromUrl.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -207,7 +208,7 @@
     <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\AdminIndex.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />

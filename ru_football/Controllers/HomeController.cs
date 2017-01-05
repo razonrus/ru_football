@@ -29,7 +29,12 @@ namespace ru_football.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            return View();
+        }
+
+        public ActionResult AdminIndex()
+        {
+            ViewBag.Message = "Admin Index";
 
             return View();
         }
