@@ -29,7 +29,12 @@ namespace ru_football.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            using (unitOfWorkFactory.Create())
+            {
+                var users = queryFactory.FindAll<Ljuser>().Execute().ToList();
+
+                return View(users.Select(x=>x.Name).ToList());
+            }
         }
 
         public ActionResult AdminIndex()
@@ -44,16 +49,16 @@ namespace ru_football.Controllers
             return View();
         }
 
-        public ActionResult UserStatistic()
+        public ActionResult UserStatistic(string userName)
         {
-            return View();
-        }
+            if (string.IsNullOrEmpty(userName))
+                return View();
 
-        [HttpPost]
-        public ActionResult UserStatistic(UserStatsModel model)
-        {
-            model.Result = calculator.CalculateForUser(model.Name);
-            return View(model);
+            return View(new UserStatsModel
+            {
+                Name = userName,
+                Result = calculator.CalculateForUser(userName)
+            });
         }
 
         [HttpPost]

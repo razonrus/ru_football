@@ -1,10 +1,22 @@
-﻿@{
+﻿@model List<String>
+
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <h2>@ViewBag.Message</h2>
 <p>
-    
+    Статистика игроков по турам
+
+    <ul>
+        @foreach (var user in Model.OrderBy(x=>x))
+        {
+            <li>
+                @Html.ActionLink(user, "UserStatistic", new { userName = user })
+            </li>
+        }
+    </ul>
 </p>
 <hr/>
 <p>
