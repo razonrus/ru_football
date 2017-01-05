@@ -160,6 +160,20 @@ namespace ru_football.Controllers
             return new EmptyResult();
         }
 
+        public ActionResult CurrentTurnirTable()
+        {
+            int matchesCount;
+            using (unitOfWorkFactory.Create())
+            {
+                matchesCount = queryFactory.FindAll<Match>().Execute().Count();
+            }
+
+            return View("CalculateTurnirTable", new CalculateTurnirTableModel
+            {
+                Result = calculator.CalculateTurnirTable(matchesCount - 8)
+            });
+        }
+
         public ActionResult CalculateTurnirTable()
         {
             using (unitOfWorkFactory.Create())
