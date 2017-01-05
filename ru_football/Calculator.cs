@@ -49,7 +49,7 @@ namespace ru_football
         {
             using (unitOfWorkFactory.Create())
             {
-                var matches = queryFactory.FindAll<Match>().Execute().ToList();
+                var matches = queryFactory.FindAll<Match>().Execute().Where(x=>x.GuestsGoals.HasValue && x.OwnersGoals.HasValue).ToList();
                 var allForecasts = queryFactory.FindAll<Forecast>().Execute().ToList();
 
                 foreach (var match in matches)
