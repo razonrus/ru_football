@@ -150,6 +150,8 @@
   <ItemGroup>
     <Compile Include="Calculator.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ForecastParser.cs" />
     <Compile Include="Global.asax.cs">
@@ -174,19 +176,19 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
-    <Content Include="Views\Home\CalculateTourResult.cshtml" />
-    <Content Include="Views\Home\CalculateTurnirTable.cshtml" />
-    <Content Include="Views\Home\ParseTourResult.cshtml" />
-    <Content Include="Views\Home\BeforeTour.cshtml" />
+    <Content Include="Views\Admin\CalculateTourResult.cshtml" />
+    <Content Include="Views\Admin\CalculateTurnirTable.cshtml" />
+    <Content Include="Views\Admin\ParseTourResult.cshtml" />
+    <Content Include="Views\Admin\BeforeTour.cshtml" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Home\Chart.cshtml" />
+    <Content Include="Views\Admin\Chart.cshtml" />
     <Content Include="Views\Home\UserStatistic.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\TurnirTable.cshtml" />
     <Content Include="Views\Home\TourResult.cshtml" />
-    <None Include="Views\Home\ParseTourFromUrl.cshtml" />
+    <None Include="Views\Admin\ParseTourFromUrl.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -211,7 +213,7 @@
     <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Views\Home\AdminIndex.cshtml" />
+    <Content Include="Views\Admin\AdminIndex.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
