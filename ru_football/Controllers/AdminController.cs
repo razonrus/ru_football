@@ -10,6 +10,7 @@ using IQueryFactory = Domain.IQueryFactory;
 
 namespace ru_football.Controllers
 {
+    [AllowAdminAttribute]
     public class AdminController : ControllerBase
     {
         private ISelenium selenium;

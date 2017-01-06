@@ -151,6 +151,7 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AllowAdminAttribute.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ForecastParser.cs" />
