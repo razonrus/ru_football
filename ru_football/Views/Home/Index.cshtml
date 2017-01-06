@@ -19,7 +19,9 @@
     <ul class="tour-numbers">
         @foreach (var number in Model.TourNumbers)
         {
-  <li>@number</li>
+            <li>
+                @Html.ActionLink(number.ToString(), "TourResult", new { number})
+            </li>
         }
     </ul>
 </p>

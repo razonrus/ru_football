@@ -185,6 +185,7 @@
     <Content Include="Views\Home\UserStatistic.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\TurnirTable.cshtml" />
+    <Content Include="Views\Home\TourResult.cshtml" />
     <None Include="Views\Home\ParseTourFromUrl.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -32,7 +32,7 @@ namespace ru_football.Controllers
             using (unitOfWorkFactory.Create())
             {
                 var users = queryFactory.FindAll<Ljuser>().Execute().ToList();
-                var matches = queryFactory.FindAll<Match>().Execute().ToList();
+                var matches = queryFactory.FindAll<Match>().Execute().Where(x=>x.IsOver()).ToList();
 
                 return View(new UserIndexModel
                 {
@@ -114,26 +114,43 @@ namespace ru_football.Controllers
             var start = int.Parse(tours.First());
             var end = int.Parse(tours.Last());
 
-            string html="";
+            string html = "";
             for (int i = start; i <= end; i++)
             {
                 html += string.Format(@"<lj-cut text=""Результаты {0}-го тура ЧР.""><BR><h4>Результаты {0}-го тура</h4>", i);
-                var numbers = new List<int>();
-                for (int j = (i-1)*8+1; j <= i*8; j++)
-                {
-                    numbers.Add(j);
-                }
-
+                var numbers = GetMatchNumbers(i);
+                
                 html += calculator.CalculateTourResult(numbers);
                 html += "</lj-cut><BR><BR>";
             }
 
             html += string.Format(@"<lj-cut text=""Турнирная таблица после {0}-го тура ЧР.""><BR><h4>Турнирная таблица</h4>", end);
-            html += calculator.CalculateTurnirTable((start-1)*8);
+            html += calculator.CalculateTurnirTable((start - 1) * 8);
             html += "</lj-cut>";
 
             model.Result = html;
             return View(model);
+        }
+
+        public ActionResult TourResult(int number)
+        {
+            string html="";
+
+            var numbers = GetMatchNumbers(number);
+
+            html += calculator.CalculateTourResult(numbers);
+            
+            return View((object)html);
+        }
+
+        private static List<int> GetMatchNumbers(int tourNumber)
+        {
+            var numbers = new List<int>();
+            for (int j = (tourNumber - 1)*8 + 1; j <= tourNumber * 8; j++)
+            {
+                numbers.Add(j);
+            }
+            return numbers;
         }
 
         public ActionResult SureThing()
