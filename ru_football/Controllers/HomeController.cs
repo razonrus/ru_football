@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using Domain;
 using IndyCode.Infrastructure.Domain;
@@ -8,6 +9,7 @@ using Selenium;
 using log4net;
 using ru_football.Models;
 using IQueryFactory = Domain.IQueryFactory;
+using Match = Domain.Match;
 
 namespace ru_football.Controllers
 {
@@ -134,11 +136,9 @@ namespace ru_football.Controllers
 
         public ActionResult TourResult(int number)
         {
-            string html="";
-
             var numbers = GetMatchNumbers(number);
 
-            html += calculator.CalculateTourResult(numbers);
+            var html = LjToHtml(calculator.CalculateTourResult(numbers));
             
             return View((object)html);
         }
@@ -192,7 +192,7 @@ namespace ru_football.Controllers
 
             return View("TurnirTable", new CalculateTurnirTableModel
             {
-                Result = calculator.CalculateTurnirTable(matchesCount - 8)
+                Result = LjToHtml(calculator.CalculateTurnirTable(matchesCount - 8))
             });
         }
 
@@ -252,6 +252,13 @@ namespace ru_football.Controllers
 
             model.Result = html;
             return View(model);
+        }
+
+        private string LjToHtml(string input)
+        {
+            return Regex.Replace(input, "<lj user=\"([^\"]+)\">",
+                @"<span><a href=""http://$1.livejournal.com/profile"" target=""_self""><img style=""vertical-align: text-bottom;"" src=""http://l-stat.livejournal.net/img/userinfo.gif?v=17080?v=144""></a><a href=""http://$1.livejournal.com/"" target=""_self""><b>$1</b></a></span>"
+                );
         }
     }
 }
