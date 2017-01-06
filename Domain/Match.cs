@@ -42,5 +42,10 @@ namespace Domain
         {
             return GuestsGoals.HasValue && OwnersGoals.HasValue;
         }
+
+        public virtual int GetTourNumber()
+        {
+            return (Number - 1)/8 + 1;
+        }
     }
 }

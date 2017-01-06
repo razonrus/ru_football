@@ -32,8 +32,13 @@ namespace ru_football.Controllers
             using (unitOfWorkFactory.Create())
             {
                 var users = queryFactory.FindAll<Ljuser>().Execute().ToList();
+                var matches = queryFactory.FindAll<Match>().Execute().ToList();
 
-                return View(users.Select(x=>x.Name).ToList());
+                return View(new UserIndexModel
+                {
+                    UserNames = users.Select(x => x.Name).ToList(),
+                    TourNumbers = matches.Select(x=>x.GetTourNumber()).Distinct().ToList()
+                });
             }
         }
 

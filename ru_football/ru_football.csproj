@@ -163,6 +163,7 @@
     <Compile Include="Models\ForecastDto.cs" />
     <Compile Include="Models\ParseMatchesResultModel.cs" />
     <Compile Include="Models\ParseUrlModel.cs" />
+    <Compile Include="Models\UserIndexModel.cs" />
     <Compile Include="Models\UserStatsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterRoutes.cs" />

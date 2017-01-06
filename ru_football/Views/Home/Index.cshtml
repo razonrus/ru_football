@@ -1,19 +1,33 @@
-﻿@model List<String>
+﻿@model ru_football.Models.UserIndexModel
 
 
 @{
     ViewBag.Title = "Home Page";
 }
-
+<style type="text/css">
+    .tour-numbers li {
+            display: inline;
+            margin-right: 5px; /* Отступ слева */
+    }
+</style>
 <h2>@ViewBag.Message</h2>
 <p>
     @Html.ActionLink("Текущая турнирная таблица", "CurrentTurnirTable")
 </p>
 <p>
+    Результаты туров:
+    <ul class="tour-numbers">
+        @foreach (var number in Model.TourNumbers)
+        {
+  <li>@number</li>
+        }
+    </ul>
+</p>
+<p>
     Статистика игроков по турам
 
     <ul>
-        @foreach (var user in Model.OrderBy(x=>x))
+        @foreach (var user in Model.UserNames.OrderBy(x => x))
         {
             <li>
                 @Html.ActionLink(user, "UserStatistic", new { userName = user })
