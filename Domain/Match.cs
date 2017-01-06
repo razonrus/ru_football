@@ -37,5 +37,10 @@ namespace Domain
         {
             return string.Format("{0} - {1}", Owners.Name, Guests.Name);
         }
+
+        public virtual bool IsOver()
+        {
+            return GuestsGoals.HasValue && OwnersGoals.HasValue;
+        }
     }
 }
