@@ -165,10 +165,10 @@ namespace ru_football.Controllers
             int matchesCount;
             using (unitOfWorkFactory.Create())
             {
-                matchesCount = queryFactory.FindAll<Match>().Execute().Count();
+                matchesCount = queryFactory.FindAll<Match>().Execute().Count(x => x.IsOver());
             }
 
-            return View("CalculateTurnirTable", new CalculateTurnirTableModel
+            return View("TurnirTable", new CalculateTurnirTableModel
             {
                 Result = calculator.CalculateTurnirTable(matchesCount - 8)
             });

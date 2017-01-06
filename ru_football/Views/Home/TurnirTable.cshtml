@@ -1,0 +1,14 @@
+@using System.Text.RegularExpressions
+@using ru_football.Models;
+@model CalculateTurnirTableModel
+
+@{
+    ViewBag.Title = "Текущая турнирная таблица";
+}
+
+@if (Model != null && Model.Result != null)
+{
+    @Html.Raw(Regex.Replace(Model.Result, "<lj user=\"([^\"]+)\">",
+        @"<span><a href=""http://$1.livejournal.com/profile"" target=""_self""><img style=""vertical-align: text-bottom;"" src=""http://l-stat.livejournal.net/img/userinfo.gif?v=17080?v=144""></a><a href=""http://$1.livejournal.com/"" target=""_self""><b>$1</b></a></span>"
+        ))
+}
