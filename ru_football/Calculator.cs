@@ -64,7 +64,7 @@ namespace ru_football
                     .GroupBy(x => (x.Number - 1)/8 + 1)
                     .ToDictionary(x => x.Key, x =>
                     {
-                        return new Dictionary<string, double>()
+                        return new Dictionary<string, double>
                         {
                             {NameForAvg, x.Sum(f => (int) f.Score)/(double) x.Select(f => f.Ljuser.Name).Distinct().Count()},
                             {userName, x.Where(f => f.Ljuser.Name == userName).Sum(f => (int) f.Score)}
@@ -413,7 +413,8 @@ namespace ru_football
 
                 statistic += "<br/>";
 
-                IEnumerable<string> orderedLjusers = OrderedLjusers(0).Take(10).Select(x => x.Key.Name);
+                var loadData = LoadData();
+                IEnumerable<string> orderedLjusers = OrderedLjusers(0, loadData.allForecasts, loadData.users).Take(10).Select(x => x.Key.Name);
                 statistic += StatisticBeforeTour(results.Where(x => orderedLjusers.Contains(x.Ljuser.Name)).ToList(),
                                                  numbers, @"Прогнозы топ-10");
 
@@ -434,7 +435,8 @@ namespace ru_football
             html += GetTd("Очки", 70);
             html += "</tr>";
 
-            IEnumerable<IGrouping<Ljuser, Forecast>> orderedEnumerable = OrderedLjusers(lastMatchNumberOfPreviousTour);
+            var loadData = LoadData();
+            IEnumerable<IGrouping<Ljuser, Forecast>> orderedEnumerable = OrderedLjusers(lastMatchNumberOfPreviousTour, loadData.allForecasts, loadData.users);
 
             foreach (var userForecasts in orderedEnumerable)
             {
@@ -668,26 +670,8 @@ namespace ru_football
             }
         }
 
-        private IEnumerable<IGrouping<Ljuser, Forecast>> OrderedLjusers(int lastMatchNumberOfPreviousTour)
+        private IEnumerable<IGrouping<Ljuser, Forecast>> OrderedLjusers(int lastMatchNumberOfPreviousTour, IList<Forecast> allForecasts, IList<Ljuser> users)
         {
-            IEnumerable<Forecast> allForecasts;
-            IEnumerable<Ljuser> users;
-            using (unitOfWorkFactory.Create())
-            {
-                users = queryFactory.FindAll<Ljuser>().Execute().ToList();
-                allForecasts = users.SelectMany(x => x.Forecasts).ToList();
-                IEnumerable<Match> allMatches = queryFactory.FindAll<Match>().Execute().ToList();
-
-                foreach (Forecast forecast in allForecasts)
-                {
-                    Match match = allMatches.SingleOrDefault(x => x.Number == forecast.Number);
-
-                    if (match == null || (match.OwnersGoals == null && match.GuestsGoals == null))
-                        continue;
-
-                    SetScore(forecast, match);
-                }
-            }
             foreach (var userForecasts in allForecasts.GroupBy(x => x.Ljuser))
             {
                 userForecasts.Key.ScoresAfterPreviousTour =
@@ -713,6 +697,40 @@ namespace ru_football
             IOrderedEnumerable<IGrouping<Ljuser, Forecast>> orderedEnumerable =
                 allForecasts.GroupBy(x => x.Ljuser).OrderBy(x => x.Key.Rank);
             return orderedEnumerable;
+        }
+
+        private class Data
+        {
+            public IList<Forecast> allForecasts { get; }
+
+            public IList<Ljuser> users { get; }
+
+            public Data(IList<Forecast> allForecasts, IList<Ljuser> users)
+            {
+                this.allForecasts = allForecasts;
+                this.users = users;
+            }
+        }
+
+        private Data LoadData()
+        {
+            using (unitOfWorkFactory.Create())
+            {
+                var users = queryFactory.FindAll<Ljuser>().Execute().ToList();
+                var allForecasts = users.SelectMany(x => x.Forecasts).ToList();
+                IEnumerable<Match> allMatches = queryFactory.FindAll<Match>().Execute().ToList();
+
+                foreach (Forecast forecast in allForecasts)
+                {
+                    Match match = allMatches.SingleOrDefault(x => x.Number == forecast.Number);
+
+                    if (match == null || (match.OwnersGoals == null && match.GuestsGoals == null))
+                        continue;
+
+                    SetScore(forecast, match);
+                }
+                return new Data(allForecasts, users);
+            }
         }
 
         private IEnumerable<IGrouping<Ljuser, Forecast>> OrderedByPercentLjusers()
