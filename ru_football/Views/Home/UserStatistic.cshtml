@@ -7,6 +7,10 @@
 
 @if (Model != null && Model.Result != null)
 {
+    <div>
+        @Html.ActionLink("Все прогнозы пользователя " + Model.Name, "UserForecasts", new {userName = Model.Name})
+    </div>
+
     <script src="../../Scripts/Chart.js"></script>
 
     <div style="max-width: 800px; max-height: 400px;">
@@ -32,7 +36,7 @@
                     borderWidth: 2
                 },
                 {
-                    label: 'Среднее кол-во очков в туре',
+                    label: 'Среднее среди всех участников кол-во очков в туре',
                     data: [@Html.Raw(string.Join(",", Model.Result.Values.Select(x=>x[Calculator.NameForAvg].ToString().Replace(",","."))))],
                     backgroundColor: [
                         'rgba(0, 99, 132, 0.2)'

@@ -1,7 +1,10 @@
 @model string
 
-@{
-    ViewBag.Title = "Результаты тура";
-}
-
-        @Html.Raw(Model)
+<style type="text/css">
+    td b span {
+        white-space: nowrap;
+    }
+</style>
+<div style="overflow-y: auto;">
+    @Html.Raw(Model)
+</div>

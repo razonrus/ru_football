@@ -20,7 +20,7 @@ namespace ru_football
         string CalculatePercentTurnirTable();
         string CalculateBeforeTour(string numbers);
         FileStreamResult Chart(int commandId);
-        string CalculateTourResult(IEnumerable<int> matchNumbers);
+        string CalculateTourResult(IEnumerable<int> matchNumbers, IList<string> users = null);
         Dictionary<int, Dictionary<string, double>> CalculateForUser(string userName);
     }
 
@@ -81,7 +81,7 @@ namespace ru_football
             }
         }
 
-        public string CalculateTourResult(IEnumerable<int> matchNumbers)
+        public string CalculateTourResult(IEnumerable<int> matchNumbers, IList<string> users = null)
         {
             var results = new List<Forecast>();
 
@@ -91,9 +91,12 @@ namespace ru_football
             {
                 matches = queryFactory.FindAll<Match>().Execute().ToList();
 
+                if (matchNumbers == null || matchNumbers.Any() == false)
+                    matchNumbers = matches.Where(x => x.IsOver()).Select(x => x.Number).ToList();
+
                 foreach (int matchNumber in matchNumbers)
                 {
-                    var forecasts = queryFactory.GetForecastsByNumber(matchNumber).Execute();
+                    var forecasts = queryFactory.GetForecastsByNumber(matchNumber).Execute().Where(x => users == null || users.Contains(x.Ljuser.Name));
                     Match match = matches.SingleOrDefault(x => x.Number == matchNumber);
 
                     if (match == null)
@@ -110,32 +113,38 @@ namespace ru_football
                 }
             }
 
-            string statistic = @"<u>Статистика тура:</u><br/><table border=""3""><tr align=""center"">";
-            statistic += GetTd("Номер матча", 160, "left");
-            foreach (int number in matchNumbers)
-            {
-                statistic += GetTd(number);
-            }
-            statistic += @"</tr>";
-            statistic += @"<tr align=""center"">";
-            statistic = AddResults(statistic, matchNumbers, matches);
-            statistic += @"</tr>";
-            statistic += AddStatisticRow(results, matchNumbers, "Угаданных счетов<br/>(4 очка)",
-                ScoreType.ScoreMatch);
-            statistic += AddStatisticRow(results, matchNumbers, "Угаданных разниц<br/>(2 очка)",
-                ScoreType.Difference);
-            statistic += AddStatisticRow(results, matchNumbers, "Угаданных исходов<br/>(1 очко)", ScoreType.Result);
-            statistic += AddStatisticRow(results, matchNumbers, "Угадано всего<br/>(хотя бы 1 очко)",
-                ScoreType.Result, ScoreType.ScoreMatch, ScoreType.Difference);
-            statistic += @"</table>";
-            statistic += "<br/>";
-
+            string html = tablo + "<br/>";
             IEnumerable<IGrouping<string, Forecast>> groupedByUser = results.GroupBy(x => x.Ljuser.Name).ToList();
-            string best = GetTheBestFromTour(groupedByUser);
 
-            var avg = string.Format("Среднее количество набранных очков: <b>{0}</b><br/><br/>", groupedByUser.Select(x => x.Sum(z => (int) z.Score)).Average().ToString("F"));
+            if (users == null || users.Any() == false)
+            {
+                string statistic = @"<u>Статистика тура:</u><br/><table border=""3""><tr align=""center"">";
+                statistic += GetTd("Номер матча", 160, "left");
+                foreach (int number in matchNumbers)
+                {
+                    statistic += GetTd(number);
+                }
+                statistic += @"</tr>";
+                statistic += @"<tr align=""center"">";
+                statistic = AddResults(statistic, matchNumbers, matches);
+                statistic += @"</tr>";
+                statistic += AddStatisticRow(results, matchNumbers, "Угаданных счетов<br/>(4 очка)",
+                    ScoreType.ScoreMatch);
+                statistic += AddStatisticRow(results, matchNumbers, "Угаданных разниц<br/>(2 очка)",
+                    ScoreType.Difference);
+                statistic += AddStatisticRow(results, matchNumbers, "Угаданных исходов<br/>(1 очко)", ScoreType.Result);
+                statistic += AddStatisticRow(results, matchNumbers, "Угадано всего<br/>(хотя бы 1 очко)",
+                    ScoreType.Result, ScoreType.ScoreMatch, ScoreType.Difference);
+                statistic += @"</table>";
+                statistic += "<br/>";
 
-            string html = tablo + "<br/>" + statistic + best + avg + @"<table border=""3""><tr align=""center"">";
+                string best = GetTheBestFromTour(groupedByUser);
+
+                var avg = string.Format("Среднее количество набранных очков: <b>{0}</b><br/><br/>", groupedByUser.Select(x => x.Sum(z => (int) z.Score)).Average().ToString("F"));
+
+                html += statistic + best + avg;
+            }
+            html += @"<table border=""3""><tr align=""center"">";
             html = AddResults(html, matchNumbers, matches);
 
             html += GetTd("");

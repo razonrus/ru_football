@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using Domain;
@@ -30,7 +31,12 @@ namespace ru_football.Controllers
                 });
             }
         }
-        
+
+        public ActionResult UserForecasts(string userName)
+        {
+            return View("TourResult", (object) LjToHtml(Calculator.CalculateTourResult(null, new List<string>() {userName})));
+        }
+
         public ActionResult UserStatistic(string userName)
         {
             if (string.IsNullOrEmpty(userName))
