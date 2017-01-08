@@ -9,5 +9,6 @@ namespace ru_football.Models
         public string Name { get; set; }
 
         public Dictionary<int, Dictionary<string, double>> Result { get; set; }
+        public Dictionary<int, int> TourProgress { get; set; }
     }
 }

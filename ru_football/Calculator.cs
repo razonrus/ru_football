@@ -22,6 +22,7 @@ namespace ru_football
         FileStreamResult Chart(int commandId);
         string CalculateTourResult(IEnumerable<int> matchNumbers, IList<string> users = null);
         Dictionary<int, Dictionary<string, double>> CalculateForUser(string userName);
+        Dictionary<int, int> CalculateTourProgress(string userName);
     }
 
     public class Calculator : ICalculator
@@ -414,12 +415,30 @@ namespace ru_football
                 statistic += "<br/>";
 
                 var loadData = LoadData();
-                IEnumerable<string> orderedLjusers = OrderedLjusers(0, loadData.allForecasts, loadData.users).Take(10).Select(x => x.Key.Name);
+                IEnumerable<string> orderedLjusers = OrderedLjusers(0, loadData.AllForecasts, loadData.Users).Take(10).Select(x => x.Key.Name);
                 statistic += StatisticBeforeTour(results.Where(x => orderedLjusers.Contains(x.Ljuser.Name)).ToList(),
                                                  numbers, @"Прогнозы топ-10");
 
                 return statistic;
             }
+        }
+
+        public Dictionary<int, int> CalculateTourProgress(string userName)
+        {
+            var result = new Dictionary<int, int>();
+            var loadData = LoadData();
+
+            var matches = loadData.AllMatches.Where(x => x.IsOver()).ToList();
+
+            var max = matches.Max(x=>x.Number);
+            var tour = 1;
+            for (int i = 8; i <= max; i+=8)
+            {
+                 var orderedEnumerable = OrderedLjusers(0, loadData.AllForecasts.Where(x=>x.Number<=i).ToList(), loadData.Users);
+                result.Add(tour, orderedEnumerable.TakeWhile(x=>x.Key.Name != userName).Count()+1);
+                tour++;
+            }
+            return result;
         }
 
         public string CalculateTurnirTable(int lastMatchNumberOfPreviousTour)
@@ -436,7 +455,7 @@ namespace ru_football
             html += "</tr>";
 
             var loadData = LoadData();
-            IEnumerable<IGrouping<Ljuser, Forecast>> orderedEnumerable = OrderedLjusers(lastMatchNumberOfPreviousTour, loadData.allForecasts, loadData.users);
+            IEnumerable<IGrouping<Ljuser, Forecast>> orderedEnumerable = OrderedLjusers(lastMatchNumberOfPreviousTour, loadData.AllForecasts, loadData.Users);
 
             foreach (var userForecasts in orderedEnumerable)
             {
@@ -701,15 +720,18 @@ namespace ru_football
 
         private class Data
         {
-            public IList<Forecast> allForecasts { get; }
+            public IList<Forecast> AllForecasts { get; }
 
-            public IList<Ljuser> users { get; }
+            public IList<Ljuser> Users { get; }
 
-            public Data(IList<Forecast> allForecasts, IList<Ljuser> users)
+            public Data(IList<Forecast> allForecasts, IList<Ljuser> users, IEnumerable<Match> allMatches)
             {
-                this.allForecasts = allForecasts;
-                this.users = users;
+                AllForecasts = allForecasts;
+                Users = users;
+                AllMatches = allMatches;
             }
+
+            public IEnumerable<Match> AllMatches { get; }
         }
 
         private Data LoadData()
@@ -729,7 +751,7 @@ namespace ru_football
 
                     SetScore(forecast, match);
                 }
-                return new Data(allForecasts, users);
+                return new Data(allForecasts, users, allMatches);
             }
         }
 

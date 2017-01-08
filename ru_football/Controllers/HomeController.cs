@@ -45,7 +45,8 @@ namespace ru_football.Controllers
             return View(new UserStatsModel
             {
                 Name = userName,
-                Result = Calculator.CalculateForUser(userName)
+                Result = Calculator.CalculateForUser(userName),
+                TourProgress = Calculator.CalculateTourProgress(userName)
             });
         }
         

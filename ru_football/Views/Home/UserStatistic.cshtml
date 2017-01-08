@@ -14,12 +14,42 @@
     <script src="../../Scripts/Chart.js"></script>
 
     <div style="max-width: 800px; max-height: 400px;">
+        <canvas id="tourProgress" width="800" height="400"></canvas>
+    </div>
+    <div style="max-width: 800px; max-height: 400px;">
         <canvas id="myChart" width="800" height="400"></canvas>
     </div>
     <div style="max-width: 800px; max-height: 400px;">
         <canvas id="relativeScores" width="800" height="400"></canvas>
     </div>
     <script>
+        new Chart(document.getElementById("tourProgress"), {
+            type: 'line',
+            data: {
+                labels: [@Html.Raw(string.Join(",", Model.TourProgress.Keys))],
+                datasets: [{
+                    label: '@Model.Name - место в турнирной таблице по турам',
+                    data: [@Html.Raw(string.Join(",", Model.TourProgress.Values))],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+
         new Chart(document.getElementById("myChart"), {
             type: 'line',
             data: {
