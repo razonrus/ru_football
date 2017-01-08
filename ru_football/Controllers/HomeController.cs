@@ -72,5 +72,10 @@ namespace ru_football.Controllers
                 @"<span><a href=""http://$1.livejournal.com/profile"" target=""_self""><img style=""vertical-align: text-bottom;"" src=""http://l-stat.livejournal.net/img/userinfo.gif?v=17080?v=144""></a><a href=""http://$1.livejournal.com/"" target=""_self""><b>$1</b></a></span>"
                 );
         }
+
+        public ActionResult Disqus()
+        {
+            return View();
+        }
     }
 }
