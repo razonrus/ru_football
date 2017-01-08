@@ -1,17 +1,19 @@
 ﻿@model ru_football.Models.UserIndexModel
 
-
-@{
-    ViewBag.Title = "Home Page";
-}
 <style type="text/css">
     .tour-numbers li {
-            display: inline;
-            margin-right: 5px; /* Отступ слева */
+        display: inline;
+        margin-right: 5px; /* Отступ слева */
     }
 </style>
-<h2>@ViewBag.Message</h2>
-<p>
+<img style="float: right;" src="http://l-userpic.livejournal.com/43117993/7344842" alt="razonrus" />
+
+<p>Вот уже 10 лет (с 2007 года) я <a href="http://ru-football.livejournal.com/profile">в ЖЖ</a> провожу турниры по прогнозам на матчи Чемпионата России по футболу
+    <br/><a href="http://ru-football.livejournal.com/6589261.html">Правила</a>
+<br /><a href="http://ru-football.livejournal.com/tag/%D1%87%D0%B5%D0%BC%D0%BF%D0%B8%D0%BE%D0%BD%D0%B0%D1%82%20%D0%BF%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7%D0%B8%D1%81%D1%82%D0%BE%D0%B2">Участвовать</a></p>
+(c) Ваш <span><a href="http://razonrus.livejournal.com/profile" target="_self"><img style="vertical-align: text-bottom;" src="http://l-stat.livejournal.net/img/userinfo.gif?v=17080?v=144"></a><a href="http://razonrus.livejournal.com/" target="_self"><b>razonrus</b></a></span>
+<hr/>
+<p style="font-weight: bold">
     @Html.ActionLink("Текущая турнирная таблица", "CurrentTurnirTable")
 </p>
 <p>
