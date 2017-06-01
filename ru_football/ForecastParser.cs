@@ -205,13 +205,13 @@ namespace ru_football
                     var guests = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='guests-td']//a").Single().InnerText.Replace(" Москва", "");
                     var dateString = XpathSelector.Get(matchTr.OuterHtml, "//td[@class='name-td alLeft']").Single().InnerText;
                     
-                    int guestsGoals = int.Parse(scores.Last());
-
-                    DateTime date = DateTime.Parse(dateString.Replace("|", " "));
-
                     Match matchFromDb = allMatches.SingleOrDefault(x => x.Guests.Name == guests && x.Owners.Name == owners);
                     if (matchFromDb != null)
                     {
+                        var guestsGoals = int.Parse(scores.Last());
+
+                        DateTime date = DateTime.Parse(dateString.Replace("|", " "));
+
                         if (matchFromDb.OwnersGoals.HasValue && matchFromDb.GuestsGoals.HasValue)
                         {
                             if ((matchFromDb.Guests.Name != guests ||
