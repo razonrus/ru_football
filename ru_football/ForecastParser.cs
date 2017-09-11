@@ -87,6 +87,7 @@ namespace ru_football
             var innerHtml = article.InnerHtml
                 .Replace("-Москва", "")
                 .Replace("ПФК", "")
+                .Replace("СКА-Хабаровск", "СКА Хабаровск")
                 ;
             MatchCollection matches = new Regex(@">\s*(?<number>\d+)[.:]\s*(\w*\s+)?(?<owner>[А-Яа-я]+)\s*(\(\w*\))?\s*[:-]\s*(?<guest>[А-Яа-я]+)").Matches(innerHtml);
 
