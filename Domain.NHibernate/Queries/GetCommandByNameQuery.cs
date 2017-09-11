@@ -1,4 +1,4 @@
-using System.Linq;
+п»їusing System.Linq;
 using Domain;
 using IndyCode.Infrastructure.Domain;
 
@@ -10,10 +10,12 @@ namespace ru_football.Domain.NHibernate.Queries
 
         public GetCommandByNameQuery(ILinqProvider linqProvider, string name) : base(linqProvider)
         {
-            if (name == "Арсенал")
-                name = "Арсенал Тула";
-            if (name.ToLower().Trim() == "советов" || name.ToLower().Trim() == "крылья")
-                name = "Крылья Советов";
+            if (name == "РђСЂСЃРµРЅР°Р»")
+                name = "РђСЂСЃРµРЅР°Р» РўСѓР»Р°";
+            if (name.ToLower().Trim() == "СЃРѕРІРµС‚РѕРІ" || name.ToLower().Trim() == "РєСЂС‹Р»СЊСЏ")
+                name = "РљСЂС‹Р»СЊСЏ РЎРѕРІРµС‚РѕРІ";
+            if (name.ToLower().Trim() == "С…Р°Р±Р°СЂРѕРІСЃРє" || name.ToLower().Trim() == "СЃРєР°")
+                name = "РЎРљРђ РҐР°Р±Р°СЂРѕРІСЃРє";
 
             this.name = name;
         }
