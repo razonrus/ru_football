@@ -540,35 +540,33 @@ namespace ru_football
                         .Take(20);
 
 
-                string statistic = GetTableMatchStatistic(bestScoreToCount, matches);
-                statistic += @"<br/>";
-                statistic += @"<br/>";
-                statistic += GetTableMatchStatistic(lowestScoreToCount, matches);
-                statistic += @"<br/>";
-                statistic += @"<br/>";
-
 
                 IEnumerable<IGrouping<int, Forecast>> bestResultToCount =
                     forecasts.GroupBy(x => x.Number)
                         .OrderByDescending(
-                            x => x.Count(f => (int) f.Score > 0) / (decimal) x.Count())
+                            x => x.Count(f => (int)f.Score > 0) / (decimal)x.Count())
                         .Take(10);
 
                 IEnumerable<IGrouping<int, Forecast>> lowestResultToCount =
                     forecasts.GroupBy(x => x.Number)
                         .OrderBy(
-                            x => x.Count(f => (int) f.Score > 0) / (decimal) x.Count())
+                            x => x.Count(f => (int)f.Score > 0) / (decimal)x.Count())
                         .Take(20);
 
-
+                string statistic = @"<br/><br/><lj-cut text=""Самые предсказуемые матчи""><br/><STRONG>Самые предсказуемые матчи</STRONG>";
+                statistic += GetTableMatchStatistic(bestScoreToCount, matches);
+                statistic += @"<br/>";
+                statistic += @"<br/>";
                 statistic += GetTableMatchByResultStatistic(bestResultToCount, matches);
+                statistic += @"<br/>";
+                statistic += @"<br/></lj-cut><br/><br/><lj-cut text=""Самые НЕпредсказуемые матчи""><br/><STRONG>Самые Непредсказуемые матчи</STRONG><br/><br/>";
+                statistic += GetTableMatchStatistic(lowestScoreToCount, matches);
                 statistic += @"<br/>";
                 statistic += @"<br/>";
                 statistic += GetTableMatchByResultStatistic(lowestResultToCount, matches);
                 statistic += @"<br/>";
-                statistic += @"<br/>";
-
-
+                
+                statistic += @"<br/></lj-cut><br/><br/><lj-cut text=""Прогнозируемость команд""><br/><STRONG>Прогнозируемость команд</STRONG><br/><br/>";
                 IEnumerable<Command> commands = queryFactory.FindAll<Command>().Execute();
 
                 statistic += @"<table border=""3""><tr align=""center"">";
