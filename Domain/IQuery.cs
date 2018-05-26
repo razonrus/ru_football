@@ -1,9 +1,7 @@
-﻿using JetBrains.Annotations;
-namespace Domain
+﻿namespace Domain
 {
     public interface IQuery<out T>
     {
-        [CanBeNull]
         T Execute();
     }
 }
