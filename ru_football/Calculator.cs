@@ -700,8 +700,7 @@ namespace ru_football
             int i = 1;
             foreach (
                 Ljuser ljuser in
-                    users.OrderBy(x => x.Forecasts.Count(z => z.Number <= lastMatchNumberOfPreviousTour)).
-                        OrderByDescending(x => x.ScoresAfterPreviousTour))
+                users.OrderBy(x => x.Forecasts.Count(z => z.Number <= lastMatchNumberOfPreviousTour)).OrderByDescending(x => x.ScoresAfterPreviousTour))
             {
                 if (ljuser.Forecasts.Count(z => z.Number <= lastMatchNumberOfPreviousTour) == 0)
                     ljuser.RankAfterPreviousTour = null;
@@ -709,7 +708,12 @@ namespace ru_football
                     ljuser.RankAfterPreviousTour = i++;
             }
             i = 1;
-            foreach (Ljuser ljuser in users.OrderBy(x => x.Forecasts.Count()).OrderByDescending(x => x.Scores))
+            foreach (Ljuser ljuser in users
+                .OrderByDescending(x => x.Scores)
+                .ThenBy(x => x.Forecasts.Count())
+                .ThenByDescending(x => x.Forecasts.Count(f => f.Score == ScoreType.ScoreMatch))
+                .ThenByDescending(x => x.Forecasts.Count(f => f.Score == ScoreType.Difference))
+            )
             {
                 ljuser.Rank = i++;
             }
